@@ -218,20 +218,24 @@ const CONFIG = {
       razorpayLink: "#"
     },
 
-    // ---- Mission Impossible ----
+     // ---- Mission Impossible ----
     {
       slug: "mission-impossible",
       category: "Non-Technical",
       title: "Mission Impossible",
       blurb: "Five checkpoints — observation, logic, memory, and gesture-only communication — to unlock the Final Vault.",
-      fullDescription: "A five-checkpoint non-technical event testing observation, logic, memory, communication, and teamwork.",
+      fullDescription: "Five checkpoint non-technical event testing observation, logic, memory, communication and teamwork. Teams collect clues in each round to unlock the Final Vault password.",
       teamSize: "2 members per team",
+      venue: "Small Drawing Hall, AURCM",
+      timeAndDate: "1:30 PM – 3:30 PM on 11 September 2026",
+      coordinator: "R. Abinaya",
+      coordinatorPhone: "+91 8122792468",
       rounds: [
         "Observation: View an image for 30 seconds and answer questions.",
         "Logic: Solve brain teasers, number patterns, Sudoku, riddles.",
         "Card Memory: Match face-card pairs by memory.",
         "Communication: One member uses gestures only; teammate guesses.",
-        "Final Vault: Combine clues to find the password."
+        "Final Vault: Combine clues to find the password. First buzzer gets first attempt; maximum three alternate attempts."
       ],
       rules: [
         "2 members per team.",
@@ -242,8 +246,11 @@ const CONFIG = {
         "Judges' decision is final."
       ],
       eligibility: "Open to symposium participants.",
-      judging: "Time, Accuracy, Teamwork, Least Hints.",
-      prizes: ["Winner Certificate & Prize.", "Participation gift for teams unlocking the vault."],
+      judgingCriteria: ["Time", "Accuracy", "Teamwork", "Least Hints"],
+      prizes: [
+        "Winner Certificate & Prize.",
+        "Participation gift for teams unlocking the vault."
+      ],
       fee: "TBA",
       feeAmount: 0,
       image: "https://placehold.co/900x500/12151C/FFC857?text=Mission+Impossible",
