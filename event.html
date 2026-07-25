@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Event details — SYNKRONIX '26</title>
+<meta name="description" id="pageDesc" content="Event details">
+
+<script src="events-data.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=JetBrains+Mono:wght@400;500;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#0A0C10;
+    --panel:#12151C;
+    --panel-line:#232830;
+    --text:#EDEFF2;
+    --text-dim:#9AA2AD;
+    --signal:#5B8DEF;
+    --pulse:#FFC857;
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --display: 'Orbitron', var(--mono);
+    --body: 'Rajdhani', system-ui, -apple-system, sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ margin:0; background:var(--ink); color:var(--text); font-family:var(--body); line-height:1.6; }
+  a{ color:inherit; text-decoration:none; }
+
+  nav{
+    position:sticky; top:0; z-index:10;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1rem 5%;
+    background:rgba(10,12,16,0.88);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--panel-line);
+  }
+  .logo{
+    font-family:var(--display); font-size:1.15rem; letter-spacing:0.03em;
+    display:flex; align-items:center; gap:0.3rem;
+  }
+  .logo span{ color:var(--signal); }
+  .nav-links{ display:flex; align-items:center; gap:1.5rem; }
+  .nav-links a{
+    color:var(--text-dim); font-size:0.9rem; font-weight:500;
+    transition:color 0.2s ease;
+  }
+  .nav-links a:hover{ color:var(--text); }
+
+  main{ max-width:960px; margin:0 auto; padding:3rem 5% 6rem; }
+
+  .breadcrumb{
+    font-family:var(--mono); font-size:0.78rem; color:var(--text-dim);
+    margin-bottom:1.5rem; display:flex; align-items:center; gap:0.5rem;
+  }
+  .breadcrumb .cat{
+    color:var(--signal); text-transform:uppercase; letter-spacing:0.06em;
+    font-size:0.72rem;
+  }
+  .breadcrumb .sep{ color:var(--panel-line); }
+
+  .event-hero-img{
+    width:100%; max-height:420px; object-fit:cover;
+    border-radius:10px; border:1px solid var(--panel-line);
+    margin-bottom:2rem; display:block;
+    background:var(--panel);
+  }
+
+  h1{
+    font-family:var(--display); font-size:clamp(1.9rem,5vw,2.8rem);
+    margin:0 0 0.4rem 0; line-height:1.1;
+    background:linear-gradient(135deg, #FFFFFF 25%, var(--signal) 70%, var(--pulse) 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+
+  .tagline{
+    font-family:var(--mono); color:var(--pulse); font-size:0.95rem;
+    margin:0 0 1.2rem 0; font-style:italic;
+  }
+
+  .meta-row{
+    display:flex; flex-wrap:wrap; gap:1rem; align-items:center;
+    font-family:var(--mono); font-size:0.84rem; color:var(--text-dim);
+    margin-bottom:2rem;
+  }
+  .fee-badge{
+    background:rgba(255,200,87,0.1); border:1px solid rgba(255,200,87,0.3);
+    color:var(--pulse); padding:0.4rem 0.9rem; border-radius:6px;
+    font-weight:600;
+  }
+
+  .blurb-text{
+    color:var(--text-dim); max-width:65ch; font-size:1.02rem;
+    margin-bottom:2rem; line-height:1.55;
+  }
+
+  /* Quick facts grid */
+  .fact-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+    gap:0.8rem; margin-bottom:2rem;
+  }
+  .fact-item{
+    background:linear-gradient(180deg, var(--panel), #0D1017);
+    border:1px solid var(--panel-line); border-radius:8px;
+    padding:1rem 1.1rem;
+    box-shadow:0 8px 18px -16px rgba(0,0,0,0.8);
+    transition:border-color 0.2s, transform 0.15s;
+  }
+  .fact-item:hover{ border-color:var(--signal); transform:translateY(-2px); }
+  .fact-label{
+    font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--signal); margin:0 0 0.35rem 0;
+  }
+  .fact-value{
+    font-size:0.95rem; color:var(--text); margin:0; line-height:1.35;
+  }
+  .fact-value a{ color:var(--signal); }
+
+  /* Description block */
+  .desc-block{
+    background:linear-gradient(180deg, var(--panel), #0D1017);
+    border:1px solid var(--panel-line); border-radius:10px;
+    padding:1.8rem 1.6rem; margin-bottom:2rem;
+    box-shadow:0 10px 24px -18px rgba(0,0,0,0.8);
+  }
+  .desc-block h2{
+    font-family:var(--display); font-size:1.05rem;
+    margin:0 0 1rem 0; letter-spacing:0.02em;
+  }
+  .desc-block p{ color:var(--text-dim); margin:0 0 1rem 0; line-height:1.55; }
+  .desc-block p:last-child{ margin-bottom:0; }
+
+  .rules-list{
+    margin:0; padding-left:1.3rem; color:var(--text-dim);
+    list-style-type:disc;
+  }
+  .rules-list li{ margin-bottom:0.55rem; line-height:1.45; }
+  .rules-list li:last-child{ margin-bottom:0; }
+
+  /* Info sections */
+  .info-section{ margin-bottom:2rem; }
+  .info-section h2{
+    font-family:var(--display); font-size:1rem;
+    margin:0 0 0.8rem 0; letter-spacing:0.02em;
+    padding-bottom:0.5rem; border-bottom:1px solid var(--panel-line);
+  }
+  .info-section p{ color:var(--text-dim); margin:0 0 0.8rem 0; line-height:1.5; }
+  .plain-list{
+    margin:0; padding-left:1.3rem; color:var(--text-dim); list-style-type:disc;
+  }
+  .plain-list li{ margin-bottom:0.5rem; line-height:1.4; }
+
+  /* Important dates grid */
+  .dates-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    gap:0.8rem;
+  }
+  .dates-grid .fact-item .fact-value{
+    font-family:var(--mono); font-size:0.85rem;
+  }
+
+  /* Judging note */
+  .judging-note{
+    background:rgba(91,141,239,0.06); border:1px solid var(--panel-line);
+    border-radius:8px; padding:1rem 1.2rem; margin-top:0.8rem;
+  }
+  .judging-note p{
+    color:var(--text-dim); font-size:0.88rem; margin:0; font-style:italic;
+  }
+
+  /* Coordinator card */
+  .coordinator-card{
+    background:linear-gradient(180deg, var(--panel), #0D1017);
+    border:1px solid var(--panel-line); border-radius:10px;
+    padding:1.4rem 1.6rem; margin-bottom:2rem;
+    display:flex; flex-wrap:wrap; gap:1.5rem;
+    align-items:center;
+    box-shadow:0 8px 20px -16px rgba(0,0,0,0.8);
+  }
+  .coordinator-card .coord-icon{
+    font-size:2.2rem; color:var(--signal); line-height:1;
+  }
+  .coordinator-card .coord-info{ flex:1; min-width:180px; }
+  .coordinator-card .coord-label{
+    font-family:var(--mono); font-size:0.7rem; text-transform:uppercase;
+    letter-spacing:0.08em; color:var(--signal); margin-bottom:0.3rem;
+  }
+  .coordinator-card .coord-name{
+    font-family:var(--display); font-size:1.1rem; color:var(--text); margin-bottom:0.2rem;
+  }
+  .coordinator-card .coord-phone{
+    font-family:var(--mono); font-size:0.85rem; color:var(--pulse);
+  }
+
+  /* Payment panel */
+  .pay-panel{
+    background:var(--panel); border:1px solid var(--panel-line);
+    border-radius:10px; padding:1.8rem 1.6rem; margin:2rem 0;
+  }
+  .pay-panel h2{ font-family:var(--display); font-size:1.05rem; margin:0 0 0.5rem 0; }
+  .pay-panel p{ color:var(--text-dim); font-size:0.9rem; margin:0 0 1.2rem 0; line-height:1.5; }
+
+  /* Buttons */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:0.45rem;
+    min-height:48px; padding:0.9rem 1.8rem; border-radius:8px;
+    font-weight:700; font-size:0.95rem; letter-spacing:0.01em;
+    border:none; cursor:pointer; -webkit-tap-highlight-color:transparent;
+    transition:transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn:active{ transform:translateY(0) scale(0.97); }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--signal), #7BA5FF);
+    color:var(--ink);
+    box-shadow:0 8px 22px -8px rgba(91,141,239,0.6);
+  }
+  .btn-primary:hover{ box-shadow:0 12px 28px -8px rgba(91,141,239,0.75); }
+  .btn-ghost{
+    border:1px solid var(--panel-line); color:var(--text);
+    background:rgba(255,255,255,0.02);
+  }
+  .btn-ghost:hover{ border-color:var(--signal); background:rgba(91,141,239,0.08); }
+
+  .cta-bar{
+    display:flex; gap:1rem; flex-wrap:wrap; margin-top:2rem;
+  }
+
+  /* Form embed */
+  .form-embed{ margin:2rem 0; }
+  .form-embed h2{ font-family:var(--display); font-size:1rem; margin:0 0 1rem 0; }
+  .form-embed iframe{
+    width:100%; min-height:520px; border:none;
+    border-radius:8px; background:#fff;
+  }
+  .form-embed .hint{ color:var(--text-dim); font-size:0.85rem; margin-top:0.6rem; }
+
+  .not-found{ text-align:center; padding:6rem 1rem; color:var(--text-dim); }
+  .not-found a{ color:var(--signal); }
+
+  footer{
+    border-top:1px solid var(--panel-line); padding:3rem 5%;
+    text-align:center; color:var(--text-dim); font-size:0.85rem;
+  }
+  footer a{ color:var(--signal); }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--pulse); outline-offset:2px;
+  }
+
+  .loading-screen{ position:fixed; inset:0; z-index:999; background:#000; }
+
+  .ui-spark{
+    position:fixed; width:6px; height:6px; border-radius:50%;
+    background:var(--pulse); pointer-events:none; z-index:300;
+    animation:sparkle-fly 0.5s ease-out forwards;
+  }
+  @keyframes sparkle-fly{
+    0%{ transform:translate(0,0) scale(1); opacity:1; }
+    100%{ transform:translate(var(--dx), var(--dy)) scale(0); opacity:0; }
+  }
+
+  @media (max-width: 640px) {
+    main{ padding:2rem 5% 4rem; }
+    .desc-block{ padding:1.4rem 1.2rem; }
+    .pay-panel{ padding:1.4rem 1.2rem; }
+    .coordinator-card{ flex-direction:column; align-items:flex-start; gap:0.8rem; }
+    .nav-links{ gap:0.8rem; }
+    .nav-links a{ font-size:0.82rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="loading-screen" id="loadingScreen">
+  <div class="terminal-boot">
+    <pre id="bootLines"></pre><span class="boot-cursor">▌</span>
+  </div>
+</div>
+
+<nav>
+  <a class="logo" id="navLogo" href="index.html"><span>▲</span></a>
+  <div class="nav-links">
+    <a href="index.html#events">← All events</a>
+  </div>
+</nav>
+
+<main id="mainContent">
+  <!-- Filled by JS -->
+</main>
+
+<footer>
+  <p id="footerCollege"></p>
+  <p>Questions? Email <a id="footerEmail" href="#"></a></p>
+</footer>
+
+<script src="ui-effects.js"></script>
+<script>
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get("slug");
+    const ev = CONFIG.events.find(e => e.slug === slug);
+    const main = document.getElementById("mainContent");
+
+    document.getElementById("footerCollege").textContent = CONFIG.collegeName;
+    document.getElementById("footerEmail").textContent = CONFIG.contactEmail;
+    document.getElementById("footerEmail").href = "mailto:" + CONFIG.contactEmail;
+    
+    const navLogoName = document.createElement("span");
+    navLogoName.style.color = "var(--signal)";
+    navLogoName.textContent = " " + CONFIG.eventName;
+    document.getElementById("navLogo").appendChild(navLogoName);
+
+    // ---- Helper functions ----
+    const labelize = (key) => key
+      .replace(/([a-z])([A-Z])/g, "$1 $2")
+      .replace(/^./, c => c.toUpperCase());
+
+    const listOrPara = (val) => {
+      if (!val) return "";
+      if (Array.isArray(val)) {
+        if (!val.length) return "";
+        return `<ul class="plain-list">${val.map(v => `<li>${v}</li>`).join("")}</ul>`;
+      }
+      return `<p>${val}</p>`;
+    };
+
+    const fact = (label, value) => value
+      ? `<div class="fact-item"><p class="fact-label">${label}</p><p class="fact-value">${value}</p></div>`
+      : "";
+
+    const section = (title, content) => content
+      ? `<div class="info-section"><h2>${title}</h2>${content}</div>`
+      : "";
+
+    if (!ev) {
+      main.innerHTML = `
+        <div class="not-found">
+          <h1 style="font-family:var(--display); font-size:1.6rem; color:var(--text);">Event not found</h1>
+          <p>That event link looks broken or out of date.</p>
+          <p><a href="index.html#events">Back to all events →</a></p>
+        </div>
+      `;
+      return;
+    }
+
+    document.title = ev.title + " — " + CONFIG.eventName;
+    document.getElementById("pageDesc").content = ev.blurb;
+
+    // ---- Rules ----
+    const rulesHtml = (ev.rules || []).length
+      ? `<h2 style="margin-top:1.5rem;">Rules & Regulations</h2>
+         <ul class="rules-list">${ev.rules.map(r => `<li>${r}</li>`).join("")}</ul>`
+      : "";
+
+    // ---- Quick facts ----
+    const factsArr = [
+      fact("Team size", ev.teamSize),
+      fact("Date & time", ev.timeAndDate || CONFIG.eventDateDisplay),
+      fact("Venue", ev.venue || CONFIG.venue),
+      fact("Category", ev.category),
+      fact("Organized by", ev.organizedBy),
+      fact("Presentation format", ev.presentationFormat),
+    ].filter(Boolean);
+
+    const factsHtml = factsArr.length
+      ? `<div class="fact-grid">${factsArr.join("")}</div>`
+      : "";
+
+    // ---- Coordinator card ----
+    let coordinatorHtml = "";
+    if (ev.coordinator || ev.coordinatorPhone) {
+      coordinatorHtml = `
+        <div class="coordinator-card">
+          <span class="coord-icon">📞</span>
+          <div class="coord-info">
+            <p class="coord-label">Event Coordinator</p>
+            ${ev.coordinator ? `<p class="coord-name">${ev.coordinator}</p>` : ""}
+            ${ev.coordinatorPhone ? `<p class="coord-phone">${ev.coordinatorPhone}</p>` : ""}
+          </div>
+        </div>`;
+    }
+
+    // ---- Event format ----
+    const formatHtml = section("Event Format", listOrPara(ev.eventFormat));
+
+    // ---- Judging criteria ----
+    const judgingHtml = section("Judging Criteria", listOrPara(ev.judgingCriteria));
+
+    // ---- Judging note ----
+    let judgingNoteHtml = "";
+    if (ev.judgingNote) {
+      judgingNoteHtml = `
+        <div class="judging-note">
+          <p>📌 ${ev.judgingNote}</p>
+        </div>`;
+    }
+
+    // ---- Tracks ----
+    const tracksHtml = section("Tracks", listOrPara(ev.tracks));
+
+    // ---- Rounds ----
+    const roundsHtml = section("Rounds", listOrPara(ev.rounds));
+
+    // ---- Prerequisites ----
+    const prereqHtml = section("Prerequisites / Submission Requirements", listOrPara(ev.prerequisites));
+
+    // ---- Eligibility ----
+    const eligibilityHtml = section("Eligibility", listOrPara(ev.eligibility));
+
+    // ---- Important dates ----
+    let datesHtml = "";
+    if (ev.importantDates && Object.keys(ev.importantDates).length) {
+      const cards = Object.entries(ev.importantDates)
+        .map(([key, val]) => fact(labelize(key), val))
+        .join("");
+      datesHtml = section("Important Dates", `<div class="dates-grid">${cards}</div>`);
+    }
+
+    // ---- Prizes ----
+    const prizesHtml = section("Prizes", listOrPara(ev.prizes));
+
+    // ---- Google form ----
+    const googleFormHtml = CONFIG.googleFormUrl ? `
+      <div class="form-embed">
+        <h2>Additional Details</h2>
+        <iframe src="${CONFIG.googleFormUrl}" title="Additional details form" loading="lazy">Loading form…</iframe>
+        <p class="hint">Optional — use this only if the organizers have asked for anything beyond what Razorpay already collects.</p>
+      </div>` : "";
+
+    // ---- Assemble the page ----
+    main.innerHTML = `
+      <div class="breadcrumb">
+        <span class="cat">${ev.category}</span>
+        <span class="sep">·</span>
+        <span>${CONFIG.eventName}</span>
+      </div>
+
+      <img class="event-hero-img" src="${ev.image}" alt="${ev.title}" loading="lazy">
+
+      <h1>${ev.title}</h1>
+      ${ev.tagline ? `<p class="tagline">"${ev.tagline}"</p>` : ""}
+
+      <div class="meta-row">
+        <span class="fee-badge">Registration Fee: ${ev.fee}</span>
+        <span>📅 ${ev.timeAndDate || CONFIG.eventDateDisplay}</span>
+      </div>
+
+      <p class="blurb-text">${ev.blurb}</p>
+
+      ${coordinatorHtml}
+      ${factsHtml}
+
+      <div class="desc-block">
+        <h2>About This Event</h2>
+        <p>${ev.fullDescription || ev.blurb}</p>
+        ${rulesHtml}
+      </div>
+
+      ${formatHtml}
+      ${tracksHtml}
+      ${roundsHtml}
+      ${prereqHtml}
+      ${eligibilityHtml}
+      ${judgingHtml}
+      ${judgingNoteHtml}
+      ${datesHtml}
+      ${prizesHtml}
+
+      <div class="pay-panel">
+        <h2>Ready to participate?</h2>
+        <p>Registration and payment happen securely on Razorpay. It collects your name, email, phone number, and college directly — nothing else to fill in.</p>
+        <a class="btn btn-primary" href="${ev.razorpayLink}" target="_blank" rel="noopener">
+          Register & Pay ${ev.fee} on Razorpay
+        </a>
+      </div>
+
+      ${googleFormHtml}
+
+      <div class="cta-bar">
+        <a class="btn btn-ghost" href="index.html#events">← Browse all events</a>
+        <a class="btn btn-ghost" href="index.html">Back to homepage</a>
+      </div>
+    `;
+  })();
+</script>
+
+</body>
+</html>

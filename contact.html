@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Contact — VERTEX '26</title>
+<meta name="description" content="Get in touch with the VERTEX '26 organizing team.">
+
+<script src="events-data.js"></script>
+
+<!-- Tech-inspired type: Orbitron for display, JetBrains Mono for mono, Rajdhani for body -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=JetBrains+Mono:wght@400;500;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#0A0C10;
+    --panel:#12151C;
+    --panel-line:#232830;
+    --text:#EDEFF2;
+    --text-dim:#9AA2AD;
+    --signal:#5B8DEF;
+    --pulse:#FFC857;
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --display: 'Orbitron', var(--mono);
+    --body: 'Rajdhani', system-ui, -apple-system, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--ink); color:var(--text); font-family:var(--body); line-height:1.6; }
+  a{ color:inherit; }
+
+  /* -------- loading screen: full-page hacker/terminal boot sequence
+     (terminal look itself is injected by ui-effects.js, shared across pages) -------- */
+  .loading-screen{ position:fixed; inset:0; z-index:999; background:#000; }
+
+  nav{
+    position:sticky; top:0; z-index:10;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1rem 5%;
+    background:rgba(10,12,16,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--panel-line);
+  }
+  .logo{ font-family:var(--display); font-size:1.15rem; letter-spacing:0.02em; text-decoration:none; }
+  .logo span{ color:var(--signal); }
+  nav a.back{ color:var(--text-dim); text-decoration:none; font-size:0.9rem; }
+  nav a.back:hover{ color:var(--text); }
+
+  main{ max-width:760px; margin:0 auto; padding:4rem 5% 6rem; }
+
+  .section-label{ font-family:var(--mono); font-size:0.78rem; color:var(--signal); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:0.6rem; }
+  h1{ font-family:var(--display); font-size:clamp(2rem,5vw,3rem); margin:0 0 0.8rem 0; }
+  .lead{ color:var(--text-dim); max-width:60ch; margin:0 0 2.5rem 0; }
+
+  .contact-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:1.2rem; }
+  .contact-card{
+    background:var(--panel); border:1px solid var(--panel-line); border-radius:10px;
+    padding:1.6rem; display:flex; flex-direction:column; gap:0.5rem;
+    transition:border-color 0.2s, transform 0.15s;
+  }
+  .contact-card:hover{ border-color:var(--signal); transform:translateY(-3px); }
+  .contact-card .card-icon{ font-size:1.6rem; color:var(--signal); }
+  .contact-card .card-label{ font-family:var(--mono); font-size:0.74rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.08em; }
+  .contact-card .card-value{ font-family:var(--display); font-size:1.05rem; word-break:break-word; }
+  .contact-card a.card-value{ text-decoration:none; color:var(--signal); }
+
+  .btn{
+    display:inline-block; padding:0.85rem 1.6rem; border-radius:4px;
+    font-weight:600; text-decoration:none; font-size:0.95rem;
+    border:none; cursor:pointer; transition:transform 0.15s ease;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-primary{ background:var(--signal); color:var(--ink); }
+  .btn-ghost{ border:1px solid var(--panel-line); color:var(--text); background:transparent; }
+  .cta-bar{ display:flex; gap:1rem; flex-wrap:wrap; margin-top:2.5rem; }
+
+  .venue-block{
+    background:var(--panel); border:1px solid var(--panel-line); border-radius:8px;
+    padding:1.8rem; margin-top:2.5rem;
+  }
+  .venue-block h2{ font-family:var(--display); font-size:1.05rem; margin:0 0 0.6rem 0; }
+  .venue-block p{ color:var(--text-dim); margin:0; font-family:var(--mono); font-size:0.88rem; }
+
+  footer{ border-top:1px solid var(--panel-line); padding:3rem 5%; text-align:center; color:var(--text-dim); font-size:0.85rem; }
+  footer a{ color:var(--signal); text-decoration:none; }
+
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--pulse); outline-offset:2px; }
+</style>
+</head>
+<body>
+
+<div class="loading-screen" id="loadingScreen">
+  <div class="terminal-boot">
+    <pre id="bootLines"></pre><span class="boot-cursor">▌</span>
+  </div>
+</div>
+
+<nav>
+  <a class="logo" id="navLogo" href="index.html"><span>▲</span> </a>
+  <a class="back" href="index.html#events">← All events</a>
+</nav>
+
+<main>
+  <div class="section-label">Get in touch</div>
+  <h1>Contact us</h1>
+  <p class="lead" id="contactLead">
+    Questions about registration, events, sponsorship, or anything else about the symposium —
+    reach the organizing team directly below.
+  </p>
+
+  <div class="contact-grid">
+    <div class="contact-card">
+      <span class="card-icon">✉</span>
+      <span class="card-label">Email</span>
+      <a class="card-value" id="contactEmail" href="#"></a>
+    </div>
+    <div class="contact-card">
+      <span class="card-icon">◈</span>
+      <span class="card-label">Department</span>
+      <span class="card-value" id="contactCollege"></span>
+    </div>
+    <div class="contact-card">
+      <span class="card-icon">▣</span>
+      <span class="card-label">Instagram</span>
+      <a class="card-value" id="contactInsta" href="#" target="_blank" rel="noopener">@vertex26</a>
+    </div>
+    <div class="contact-card">
+      <span class="card-icon">▤</span>
+      <span class="card-label">LinkedIn</span>
+      <a class="card-value" id="contactLinkedin" href="#" target="_blank" rel="noopener">VERTEX '26</a>
+    </div>
+  </div>
+
+  <div class="venue-block">
+    <h2>Venue &amp; dates</h2>
+    <p id="contactVenue"></p>
+  </div>
+
+  <div class="cta-bar">
+    <a class="btn btn-primary" href="mailto:#" id="contactMailBtn">Email the team</a>
+    <a class="btn btn-ghost" href="index.html#events">Browse events</a>
+  </div>
+</main>
+
+<footer>
+  <p id="footerCollege"></p>
+  <p>Built on GitHub Pages · Registration &amp; payments by Razorpay</p>
+</footer>
+
+<script src="ui-effects.js"></script>
+<script>
+  document.title = "Contact — " + CONFIG.eventName;
+  document.getElementById("navLogo").append(" " + CONFIG.eventName);
+
+  document.getElementById("contactEmail").textContent = CONFIG.contactEmail;
+  document.getElementById("contactEmail").href = "mailto:" + CONFIG.contactEmail;
+  document.getElementById("contactMailBtn").href = "mailto:" + CONFIG.contactEmail;
+  document.getElementById("contactCollege").textContent = CONFIG.collegeName;
+  document.getElementById("contactInsta").href = CONFIG.instagramUrl;
+  document.getElementById("contactLinkedin").href = CONFIG.linkedinUrl;
+  document.getElementById("contactVenue").textContent =
+    CONFIG.venue + " · " + CONFIG.eventDateDisplay;
+  document.getElementById("footerCollege").textContent = CONFIG.collegeName;
+</script>
+
+</body>
+</html>
