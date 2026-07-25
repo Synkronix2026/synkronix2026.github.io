@@ -2,7 +2,7 @@ const CONFIG = {
   eventName:        "SYNKRONIX '26",
   eventTagline:     "One day. In sync.",
   collegeName:      "Anna University Regional Campus Madurai",
-  deptName:         "Department of Computer Science & Engineering Presents",
+  deptName:         "Department of Computer Science & Engineering ",
   eventDateISO:     "2026-09-11T09:00:00",
   eventDateDisplay: "11 September 2026",
   venue:            "Main Auditorium, Anna University Regional Campus Madurai",
