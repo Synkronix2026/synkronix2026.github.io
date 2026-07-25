@@ -1,6 +1,6 @@
 const CONFIG = {
   eventName:        "SYNKRONIX '26",
-  eventTagline:     "One day. In sync.",
+  eventTagline:     "Synchronise Minds, Celebrate Wins.",
   collegeName:      "Anna University Regional Campus Madurai",
   deptName:         "Department of Computer Science & Engineering ",
   eventDateISO:     "2026-09-11T09:00:00",
