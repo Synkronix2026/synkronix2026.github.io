@@ -173,6 +173,26 @@
     color:var(--text-dim); font-size:0.88rem; margin:0; font-style:italic;
   }
 
+  /* Round cards — nested rounds (e.g. Prompt Clash) */
+  .round-card{
+    background:linear-gradient(180deg, var(--panel), #0D1017);
+    border:1px solid var(--panel-line); border-radius:10px;
+    padding:1.4rem 1.6rem; margin-bottom:1rem;
+    box-shadow:0 8px 18px -16px rgba(0,0,0,0.8);
+  }
+  .round-card:last-child{ margin-bottom:0; }
+  .round-card h3{
+    font-family:var(--display); font-size:0.95rem; color:var(--signal);
+    margin:0 0 0.6rem 0; letter-spacing:0.02em;
+  }
+  .round-card .round-objective{
+    color:var(--text); font-size:0.92rem; margin:0 0 0.9rem 0;
+    line-height:1.45;
+  }
+  .round-card .round-objective strong{ color:var(--pulse); font-weight:600; }
+  .round-card .rules-list{ margin-top:0.2rem; }
+  .round-card .judging-note{ margin-top:0.9rem; }
+
   /* Coordinator card */
   .coordinator-card{
     background:linear-gradient(180deg, var(--panel), #0D1017);
@@ -269,6 +289,7 @@
     main{ padding:2rem 5% 4rem; }
     .desc-block{ padding:1.4rem 1.2rem; }
     .pay-panel{ padding:1.4rem 1.2rem; }
+    .round-card{ padding:1.2rem 1rem; }
     .coordinator-card{ flex-direction:column; align-items:flex-start; gap:0.8rem; }
     .nav-links{ gap:0.8rem; }
     .nav-links a{ font-size:0.82rem; }
@@ -310,7 +331,7 @@
     document.getElementById("footerCollege").textContent = CONFIG.collegeName;
     document.getElementById("footerEmail").textContent = CONFIG.contactEmail;
     document.getElementById("footerEmail").href = "mailto:" + CONFIG.contactEmail;
-    
+
     const navLogoName = document.createElement("span");
     navLogoName.style.color = "var(--signal)";
     navLogoName.textContent = " " + CONFIG.eventName;
@@ -343,7 +364,7 @@
         <div class="not-found">
           <h1 style="font-family:var(--display); font-size:1.6rem; color:var(--text);">Event not found</h1>
           <p>That event link looks broken or out of date.</p>
-          <p><a href="index.html#events">Back to all events →</a></p>
+          <p><a href="index.html#events">Back to all events &rarr;</a></p>
         </div>
       `;
       return;
@@ -354,14 +375,14 @@
 
     // ---- Rules ----
     const rulesHtml = (ev.rules || []).length
-      ? `<h2 style="margin-top:1.5rem;">Rules & Regulations</h2>
+      ? `<h2 style="margin-top:1.5rem;">Rules &amp; Regulations</h2>
          <ul class="rules-list">${ev.rules.map(r => `<li>${r}</li>`).join("")}</ul>`
       : "";
 
     // ---- Quick facts ----
     const factsArr = [
       fact("Team size", ev.teamSize),
-      fact("Date & time", ev.timeAndDate || CONFIG.eventDateDisplay),
+      fact("Date &amp; time", ev.timeAndDate || CONFIG.eventDateDisplay),
       fact("Venue", ev.venue || CONFIG.venue),
       fact("Category", ev.category),
       fact("Organized by", ev.organizedBy),
@@ -377,7 +398,7 @@
     if (ev.coordinator || ev.coordinatorPhone) {
       coordinatorHtml = `
         <div class="coordinator-card">
-          <span class="coord-icon">📞</span>
+          <span class="coord-icon">&#128222;</span>
           <div class="coord-info">
             <p class="coord-label">Event Coordinator</p>
             ${ev.coordinator ? `<p class="coord-name">${ev.coordinator}</p>` : ""}
@@ -397,15 +418,36 @@
     if (ev.judgingNote) {
       judgingNoteHtml = `
         <div class="judging-note">
-          <p>📌 ${ev.judgingNote}</p>
+          <p>&#128204; ${ev.judgingNote}</p>
         </div>`;
     }
 
     // ---- Tracks ----
     const tracksHtml = section("Tracks", listOrPara(ev.tracks));
 
-    // ---- Rounds ----
-    const roundsHtml = section("Rounds", listOrPara(ev.rounds));
+    // ---- Rounds (supports flat strings AND nested objects) ----
+    let roundsHtml = "";
+    if (ev.rounds && ev.rounds.length) {
+      const isNested = typeof ev.rounds[0] === "object" && ev.rounds[0] !== null;
+      if (isNested) {
+        const cards = ev.rounds.map(r => `
+          <div class="round-card">
+            <h3>${r.name || ""}</h3>
+            ${r.objective
+              ? `<p class="round-objective"><strong>Objective:</strong> ${r.objective}</p>`
+              : ""}
+            ${r.rules && r.rules.length
+              ? `<ul class="rules-list">${r.rules.map(x => `<li>${x}</li>`).join("")}</ul>`
+              : ""}
+            ${r.note
+              ? `<div class="judging-note"><p>&#128204; ${r.note}</p></div>`
+              : ""}
+          </div>`).join("");
+        roundsHtml = section("Rounds", cards);
+      } else {
+        roundsHtml = section("Rounds", listOrPara(ev.rounds));
+      }
+    }
 
     // ---- Prerequisites ----
     const prereqHtml = section("Prerequisites / Submission Requirements", listOrPara(ev.prerequisites));
@@ -429,26 +471,26 @@
     const googleFormHtml = CONFIG.googleFormUrl ? `
       <div class="form-embed">
         <h2>Additional Details</h2>
-        <iframe src="${CONFIG.googleFormUrl}" title="Additional details form" loading="lazy">Loading form…</iframe>
-        <p class="hint">Optional — use this only if the organizers have asked for anything beyond what Razorpay already collects.</p>
+        <iframe src="${CONFIG.googleFormUrl}" title="Additional details form" loading="lazy">Loading form&hellip;</iframe>
+        <p class="hint">Optional &mdash; use this only if the organizers have asked for anything beyond what Razorpay already collects.</p>
       </div>` : "";
 
     // ---- Assemble the page ----
     main.innerHTML = `
       <div class="breadcrumb">
         <span class="cat">${ev.category}</span>
-        <span class="sep">·</span>
+        <span class="sep">&middot;</span>
         <span>${CONFIG.eventName}</span>
       </div>
 
       <img class="event-hero-img" src="${ev.image}" alt="${ev.title}" loading="lazy">
 
       <h1>${ev.title}</h1>
-      ${ev.tagline ? `<p class="tagline">"${ev.tagline}"</p>` : ""}
+      ${ev.tagline ? `<p class="tagline">&ldquo;${ev.tagline}&rdquo;</p>` : ""}
 
       <div class="meta-row">
         <span class="fee-badge">Registration Fee: ${ev.fee}</span>
-        <span>📅 ${ev.timeAndDate || CONFIG.eventDateDisplay}</span>
+        <span>&#128197; ${ev.timeAndDate || CONFIG.eventDateDisplay}</span>
       </div>
 
       <p class="blurb-text">${ev.blurb}</p>
@@ -474,16 +516,16 @@
 
       <div class="pay-panel">
         <h2>Ready to participate?</h2>
-        <p>Registration and payment happen securely on Razorpay. It collects your name, email, phone number, and college directly — nothing else to fill in.</p>
+        <p>Registration and payment happen securely on Razorpay. It collects your name, email, phone number, and college directly &mdash; nothing else to fill in.</p>
         <a class="btn btn-primary" href="${ev.razorpayLink}" target="_blank" rel="noopener">
-          Register & Pay ${ev.fee} on Razorpay
+          Register &amp; Pay ${ev.fee} on Razorpay
         </a>
       </div>
 
       ${googleFormHtml}
 
       <div class="cta-bar">
-        <a class="btn btn-ghost" href="index.html#events">← Browse all events</a>
+        <a class="btn btn-ghost" href="index.html#events">&larr; Browse all events</a>
         <a class="btn btn-ghost" href="index.html">Back to homepage</a>
       </div>
     `;
