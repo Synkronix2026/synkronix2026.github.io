@@ -6,7 +6,7 @@ const CONFIG = {
   eventDateISO:     "2026-09-11T09:00:00",
   eventDateDisplay: "11 September 2026",
   venue:            "Main Auditorium, Anna University Regional Campus Madurai",
-  contactEmail:     "synkronix26@annauniv.edu",
+  contactEmail:     "synkronix.26@gmail.com",
   instagramUrl:     "#",
   linkedinUrl:      "#",
 
@@ -105,6 +105,74 @@ const CONFIG = {
       fee: "TBA",
       feeAmount: 0,
       image: "https://placehold.co/900x500/12151C/5B8DEF?text=PaperExpo",
+      razorpayLink: "#"
+    },
+
+    // ---- Prompt Clash ----
+    {
+      slug: "prompt-clash",
+      category: "Technical",
+      title: "Prompt Clash",
+      blurb: "Think Smart. Prompt Better. Build the Future — craft the perfect AI prompt to generate the most impressive and innovative results.",
+      fullDescription: "A battle of creativity where participants craft the perfect AI prompt to generate the most impressive, accurate, and innovative results. Think smart, prompt better, and let your imagination win!",
+      teamSize: "2 members per team",
+      venue: "CCC Lab, Anna University Regional Campus, Madurai",
+      timeAndDate: "11 September 2026",
+      coordinator: "Rubiga",
+      coordinatorPhone: "+91 8015491001",
+      rounds: [
+        {
+          name: "Round 1 – One Prompt Image Challenge",
+          objective: "Generate the closest possible image using Gemini's Nano Banana feature.",
+          rules: [
+            "A common reference image will be displayed to all teams.",
+            "Teams must recreate the image using only one prompt.",
+            "Only a single prompt is allowed.",
+            "Editing, regeneration, prompt modification or additional prompts are not allowed.",
+            "Participants must use Gemini Nano Banana for this round.",
+            "Generated images will be evaluated on accuracy to the reference image, prompt quality, and creativity."
+          ],
+          note: "No teams will be eliminated in Round 1. The Top 3 teams will receive a competitive advantage in Round 2 (to be announced during the event)."
+        },
+        {
+          name: "Round 2 – AI GUI Challenge",
+          objective: "Build a simple AI-powered solution with a GUI to solve a real-world problem.",
+          rules: [
+            "No eliminations — all teams will participate.",
+            "Teams may use any AI tool of their choice.",
+            "Participants must identify a real-world problem and develop a solution with a Graphical User Interface (GUI).",
+            "A minimum of 5 prompts used during the development process must be submitted along with the final solution.",
+            "The solution should clearly demonstrate the effective use of AI."
+          ]
+        }
+      ],
+      rules: [
+        "Each team must consist of 2 members.",
+        "A participant can be part of only one team.",
+        "Each team must bring one laptop with a stable internet connection.",
+        "Before the event begins, each team must create a new Gmail account using their team's name, to be used exclusively for logging into AI tools during the competition.",
+        "Teams may use only the AI tools permitted for each round.",
+        "Prompts should not be taken from AI.",
+        "Plagiarism or using pre-created content is strictly prohibited.",
+        "The judges' decision will be final and binding.",
+        "Prompt history and source code should be submitted."
+      ],
+      judgingCriteria: [
+        "Innovation and originality",
+        "Problem-solving approach",
+        "GUI design and usability",
+        "Effective use of AI",
+        "Quality of prompts submitted"
+      ],
+      prizes: [
+        "Winner: ₹2,000 (Cash Prize)",
+        "Runner-up: ₹1,000 (Cash Prize)",
+        "Every participant will receive a Participation Certificate."
+      ],
+      tagline: "Think Smart. Prompt Better. Build the Future!",
+      fee: "TBA",
+      feeAmount: 0,
+      image: "https://placehold.co/900x500/12151C/5B8DEF?text=Prompt+Clash",
       razorpayLink: "#"
     },
 
@@ -220,5 +288,5 @@ const CONFIG = {
     }
   ],
 
-  sponsors: [] // empty sponsors list – no external images
+  sponsors: []
 };
