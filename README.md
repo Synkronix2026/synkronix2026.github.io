@@ -1,0 +1,1 @@
+# synkronix2026.github.io
