@@ -32,7 +32,7 @@ const CONFIG = {
         "Coding topics will be auctioned one by one; teams can bid only with their allotted Virtual Coins.",
         "All successful bids are final.",
         "Only the coding problems won in the Auction Round can be attempted during the Coding Round.",
-        "Solutions may be implemented in C, Java, or Python.",
+        "Solutions may be implemented in C, C++, Java, or Python.",
         "Unsolved problems incur negative marking.",
         "Teams can purchase a Sealed Power Card using Virtual Coins, which contains an advantage or a challenge.",
         "In case of a tie, a Tie-Breaker Round will determine the winner.",
