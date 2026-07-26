@@ -8,7 +8,7 @@ const CONFIG = {
   venue:            "Main Auditorium, Anna University Regional Campus Madurai",
   contactEmail:     "synkronix.26@gmail.com",
   instagramUrl:     "https://www.instagram.com/synkronix_26",
-  linkedinUrl:      "#",
+  linkedinUrl:      "https://www.linkedin.com/company/synkronix-26",
 
   events: [
     // ---- Code Auction ----
