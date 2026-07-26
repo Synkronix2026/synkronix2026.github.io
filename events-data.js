@@ -72,7 +72,10 @@ const CONFIG = {
       prerequisites: [
         "Submissions must be made through Google Form.",
         "Full paper submission (Maximum 10 pages).",
-        "Paper format: Times New Roman, A4 size, Language — English."
+        "Paper format: Times New Roman, Font Size 12, A4 size, Language — English.",
+        "Submission format: PDF.",
+        "Only accepted papers will be invited for the final presentation.",
+        "Acceptance notification will be sent via registered email."
       ],
       importantDates: {
         paperSubmissionDeadline: "TBA",
