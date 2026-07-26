@@ -260,16 +260,22 @@ const CONFIG = {
       razorpayLink: "#"
     },
 
-    // ---- Kadhaikkum Kalam ----
+ // ---- Kadhaikkum Kalam ----
     {
       slug: "kadhaikkum-kalam",
       category: "Non-Technical",
       title: "Kadhaikkum Kalam",
       blurb: "\"Think. Speak. Convince. Win.\" — a debate with a role-reversal twist in the final.",
-      fullDescription: "Kadhaikkum Kalam is an exciting debate competition designed to challenge participants' critical thinking, communication skills, and ability to present convincing arguments.",
+      fullDescription: "Kadhaikkum Kalam is an exciting debate competition designed to challenge participants' critical thinking, communication skills, and ability to present convincing arguments. The event provides a platform for participants to express their perspectives, analyze different viewpoints, and showcase their confidence through effective debating. The competition consists of two challenging stages — an Elimination Round and a Grand Finale with an innovative role-reversal twist that tests adaptability, spontaneity, and strategic thinking.",
       organizedBy: "Department of Computer Science and Engineering (CSE)",
       teamSize: "3 members per team",
-      venue: "Conference Hall",
+      venue: "Conference Hall, AURCM",
+      timeAndDate: "TBA on 11 September 2026",
+      language: "Tamil and English",
+      coordinators: [
+        { name: "P. Mohan Vaithiya", phone: "+91 9043401456" },
+        { name: "A. Shyaam Sundhar", phone: "+91 7806831862" }
+      ],
       rules: [
         "Topics will be allotted through a random draw system.",
         "A toss will determine whether the team will support or oppose the given topic.",
@@ -278,12 +284,20 @@ const CONFIG = {
         "In the final round, teams must switch their stance after the buzzer and continue the debate from the opposite perspective.",
         "Repetition of previously presented arguments after the role reversal is strictly prohibited.",
         "Participants must maintain respectful communication throughout the event.",
-        "The decision of the judges will be final."
+        "The decision of the judges will be final and binding."
       ],
       eligibility: [
         "Open to all students participating in the symposium.",
         "Each team must consist of 3 members.",
-        "A participant can be part of only one team."
+        "A participant can be part of only one team.",
+        "All participants must adhere to the event rules and regulations."
+      ],
+      judgingCriteria: [
+        "Content & Relevance – 30 Marks",
+        "Clarity of Argument – 25 Marks",
+        "Communication & Presentation Skills – 20 Marks",
+        "Rebuttal & Critical Thinking – 15 Marks",
+        "Time Management & Overall Impact – 10 Marks"
       ],
       prizes: [
         "Winner Team: ₹2,000 Cash Prize + Certificates",
@@ -296,7 +310,6 @@ const CONFIG = {
       image: "https://placehold.co/900x500/12151C/FFC857?text=Kadhaikkum+Kalam",
       razorpayLink: "#"
     }
-  ],
 
   sponsors: []
 };
