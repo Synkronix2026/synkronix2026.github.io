@@ -173,7 +173,7 @@
     color:var(--text-dim); font-size:0.88rem; margin:0; font-style:italic;
   }
 
-  /* Round cards — nested rounds (e.g. Prompt Clash) */
+  /* Round cards */
   .round-card{
     background:linear-gradient(180deg, var(--panel), #0D1017);
     border:1px solid var(--panel-line); border-radius:10px;
@@ -193,7 +193,7 @@
   .round-card .rules-list{ margin-top:0.2rem; }
   .round-card .judging-note{ margin-top:0.9rem; }
 
-  /* Coordinator card */
+  /* Coordinator card — supports single and multiple coordinators */
   .coordinator-card{
     background:linear-gradient(180deg, var(--panel), #0D1017);
     border:1px solid var(--panel-line); border-radius:10px;
@@ -204,6 +204,7 @@
   }
   .coordinator-card .coord-icon{
     font-size:2.2rem; color:var(--signal); line-height:1;
+    align-self:flex-start;
   }
   .coordinator-card .coord-info{ flex:1; min-width:180px; }
   .coordinator-card .coord-label{
@@ -215,6 +216,22 @@
   }
   .coordinator-card .coord-phone{
     font-family:var(--mono); font-size:0.85rem; color:var(--pulse);
+  }
+  /* Multi-coordinator layout */
+  .coord-multi-wrapper{
+    flex:1; display:flex; flex-wrap:wrap; gap:0; align-items:flex-start;
+  }
+  .coord-multi-label{
+    font-family:var(--mono); font-size:0.7rem; text-transform:uppercase;
+    letter-spacing:0.08em; color:var(--signal);
+    margin-bottom:0.8rem; width:100%;
+  }
+  .coord-person{
+    min-width:160px; padding-right:1.5rem;
+  }
+  .coord-person + .coord-person{
+    padding-left:1.5rem; padding-right:0;
+    border-left:1px solid var(--panel-line);
   }
 
   /* Payment panel */
@@ -291,6 +308,10 @@
     .pay-panel{ padding:1.4rem 1.2rem; }
     .round-card{ padding:1.2rem 1rem; }
     .coordinator-card{ flex-direction:column; align-items:flex-start; gap:0.8rem; }
+    .coord-person + .coord-person{
+      padding-left:0; border-left:none;
+      padding-top:1rem; border-top:1px solid var(--panel-line);
+    }
     .nav-links{ gap:0.8rem; }
     .nav-links a{ font-size:0.82rem; }
   }
@@ -300,14 +321,14 @@
 
 <div class="loading-screen" id="loadingScreen">
   <div class="terminal-boot">
-    <pre id="bootLines"></pre><span class="boot-cursor">▌</span>
+    <pre id="bootLines"></pre><span class="boot-cursor">&#9612;</span>
   </div>
 </div>
 
 <nav>
-  <a class="logo" id="navLogo" href="index.html"><span>▲</span></a>
+  <a class="logo" id="navLogo" href="index.html"><span>&#9650;</span></a>
   <div class="nav-links">
-    <a href="index.html#events">← All events</a>
+    <a href="index.html#events">&larr; All events</a>
   </div>
 </nav>
 
@@ -370,7 +391,7 @@
       return;
     }
 
-    document.title = ev.title + " — " + CONFIG.eventName;
+    document.title = ev.title + " \u2014 " + CONFIG.eventName;
     document.getElementById("pageDesc").content = ev.blurb;
 
     // ---- Rules ----
@@ -386,6 +407,7 @@
       fact("Venue", ev.venue || CONFIG.venue),
       fact("Category", ev.category),
       fact("Organized by", ev.organizedBy),
+      fact("Language", ev.language),
       fact("Presentation format", ev.presentationFormat),
     ].filter(Boolean);
 
@@ -393,9 +415,25 @@
       ? `<div class="fact-grid">${factsArr.join("")}</div>`
       : "";
 
-    // ---- Coordinator card ----
+    // ---- Coordinator card (single OR multiple) ----
     let coordinatorHtml = "";
-    if (ev.coordinator || ev.coordinatorPhone) {
+    if (ev.coordinators && ev.coordinators.length) {
+      // Multiple coordinators (e.g. Kadhaikkum Kalam)
+      const people = ev.coordinators.map(c => `
+        <div class="coord-person">
+          <p class="coord-name">${c.name}</p>
+          <p class="coord-phone">${c.phone}</p>
+        </div>`).join("");
+      coordinatorHtml = `
+        <div class="coordinator-card">
+          <span class="coord-icon">&#128222;</span>
+          <div class="coord-multi-wrapper">
+            <p class="coord-multi-label">Event Coordinators</p>
+            ${people}
+          </div>
+        </div>`;
+    } else if (ev.coordinator || ev.coordinatorPhone) {
+      // Single coordinator (all other events)
       coordinatorHtml = `
         <div class="coordinator-card">
           <span class="coord-icon">&#128222;</span>
@@ -472,7 +510,7 @@
       <div class="form-embed">
         <h2>Additional Details</h2>
         <iframe src="${CONFIG.googleFormUrl}" title="Additional details form" loading="lazy">Loading form&hellip;</iframe>
-        <p class="hint">Optional &mdash; use this only if the organizers have asked for anything beyond what Razorpay already collects.</p>
+        <p class="hint">Optional &mdash; use this only if the organizers have asked for anything beyond what the registration form already collects.</p>
       </div>` : "";
 
     // ---- Assemble the page ----
