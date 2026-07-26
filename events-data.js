@@ -221,7 +221,7 @@ const CONFIG = {
       razorpayLink: "#"
     },
 
-     // ---- Mission Impossible ----
+    // ---- Mission Impossible ----
     {
       slug: "mission-impossible",
       category: "Non-Technical",
@@ -260,7 +260,7 @@ const CONFIG = {
       razorpayLink: "#"
     },
 
- // ---- Kadhaikkum Kalam ----
+    // ---- Kadhaikkum Kalam ----
     {
       slug: "kadhaikkum-kalam",
       category: "Non-Technical",
@@ -310,7 +310,7 @@ const CONFIG = {
       image: "https://placehold.co/900x500/12151C/FFC857?text=Kadhaikkum+Kalam",
       razorpayLink: "#"
     }
-    
-  ],
+
+  ],              
   sponsors: []
 };
