@@ -310,6 +310,7 @@ const CONFIG = {
       image: "https://placehold.co/900x500/12151C/FFC857?text=Kadhaikkum+Kalam",
       razorpayLink: "#"
     }
-
+    
+  ],
   sponsors: []
 };
