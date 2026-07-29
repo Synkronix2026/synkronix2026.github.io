@@ -47,7 +47,8 @@ const CONFIG = {
       fee: "TBA",
       feeAmount: 0,
       image: "https://placehold.co/900x500/12151C/5B8DEF?text=Code+Auction",
-      razorpayLink: "#"
+      razorpayLink: "#",
+      registrationFormLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
     },
 
     // ---- PaperExpo ----
@@ -176,7 +177,8 @@ const CONFIG = {
       fee: "TBA",
       feeAmount: 0,
       image: "https://placehold.co/900x500/12151C/5B8DEF?text=Prompt+Clash",
-      razorpayLink: "#"
+      razorpayLink: "#",
+      registrationFormLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
     },
 
     // ---- Escape Room ----
@@ -218,7 +220,8 @@ const CONFIG = {
       fee: "TBA",
       feeAmount: 0,
       image: "https://placehold.co/900x500/12151C/FFC857?text=Escape+Room",
-      razorpayLink: "#"
+      razorpayLink: "#",
+      registrationFormLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
     },
 
     // ---- Mission Impossible ----
@@ -257,7 +260,8 @@ const CONFIG = {
       fee: "TBA",
       feeAmount: 0,
       image: "https://placehold.co/900x500/12151C/FFC857?text=Mission+Impossible",
-      razorpayLink: "#"
+      razorpayLink: "#",
+      registrationFormLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
     },
 
     // ---- Kadhaikkum Kalam ----
@@ -308,7 +312,8 @@ const CONFIG = {
       fee: "TBA",
       feeAmount: 0,
       image: "https://placehold.co/900x500/12151C/FFC857?text=Kadhaikkum+Kalam",
-      razorpayLink: "#"
+      razorpayLink: "#",
+      registrationFormLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
     }
 
   ],              
