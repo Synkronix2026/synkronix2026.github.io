@@ -44,8 +44,8 @@ const CONFIG = {
         "Runner-up: ₹1,000 (Cash Prize)",
         "Every participant will receive a Participation Certificate."
       ],
-      fee: "TBA",
-      feeAmount: 0,
+      fee: "₹250",
+      feeAmount: 250,
       image: "https://placehold.co/900x500/12151C/5B8DEF?text=Code+Auction",
       razorpayLink: "#",
       registrationFormLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
@@ -106,8 +106,8 @@ const CONFIG = {
         "Third Prize: ₹1,000 + Winner Certificate",
         "Presentation Certificate for all presenters"
       ],
-      fee: "TBA",
-      feeAmount: 0,
+      fee: "₹250",
+      feeAmount: 250,
       image: "https://placehold.co/900x500/12151C/5B8DEF?text=PaperExpo",
       razorpayLink: "#"
     },
@@ -174,8 +174,8 @@ const CONFIG = {
         "Every participant will receive a Participation Certificate."
       ],
       tagline: "Think Smart. Prompt Better. Build the Future!",
-      fee: "TBA",
-      feeAmount: 0,
+      fee: "₹250",
+      feeAmount: 250,
       image: "https://placehold.co/900x500/12151C/5B8DEF?text=Prompt+Clash",
       razorpayLink: "#",
       registrationFormLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
@@ -217,8 +217,8 @@ const CONFIG = {
         "Medals and certificates will be awarded to First 3 Places.",
         "All participants will get a Participation Certificate."
       ],
-      fee: "TBA",
-      feeAmount: 0,
+      fee: "₹250",
+      feeAmount: 250,
       image: "https://placehold.co/900x500/12151C/FFC857?text=Escape+Room",
       razorpayLink: "#",
       registrationFormLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
@@ -257,8 +257,8 @@ const CONFIG = {
         "Winner Certificate & Prize.",
         "Participation gift for teams unlocking the vault."
       ],
-      fee: "TBA",
-      feeAmount: 0,
+      fee: "₹250",
+      feeAmount: 250,
       image: "https://placehold.co/900x500/12151C/FFC857?text=Mission+Impossible",
       razorpayLink: "#",
       registrationFormLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
@@ -309,8 +309,8 @@ const CONFIG = {
         "Participants: Certificates"
       ],
       tagline: "Think. Speak. Convince. Win.",
-      fee: "TBA",
-      feeAmount: 0,
+      fee: "₹250",
+      feeAmount: 250,
       image: "https://placehold.co/900x500/12151C/FFC857?text=Kadhaikkum+Kalam",
       razorpayLink: "#",
       registrationFormLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
