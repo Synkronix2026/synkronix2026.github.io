@@ -40,8 +40,8 @@ const CONFIG = {
       ],
       judgingCriteria: "Judging will be based on the total points earned by completing the auctioned coding problems. Each problem carries different points based on its difficulty level.",
       prizes: [
-        "Winner: ₹2,000 (Cash Prize)",
-        "Runner-up: ₹1,000 (Cash Prize)",
+        "Winner: ₹TBA (Cash Prize)",
+        "Runner-up: ₹TBA (Cash Prize)",
         "Every participant will receive a Participation Certificate."
       ],
       fee: "₹250",
