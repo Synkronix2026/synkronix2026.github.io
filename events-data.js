@@ -101,9 +101,9 @@ const CONFIG = {
         "Time Management"
       ],
       prizes: [
-        "First Prize: ₹3,000 + Winner Certificate",
-        "Second Prize: ₹2,000 + Winner Certificate",
-        "Third Prize: ₹1,000 + Winner Certificate",
+        "First Prize: ₹TBA + Winner Certificate",
+        "Second Prize: ₹TBA + Winner Certificate",
+        "Third Prize: ₹TBA + Winner Certificate",
         "Presentation Certificate for all presenters"
       ],
       fee: "₹250",
@@ -169,8 +169,8 @@ const CONFIG = {
         "Quality of prompts submitted"
       ],
       prizes: [
-        "Winner: ₹2,000 (Cash Prize)",
-        "Runner-up: ₹1,000 (Cash Prize)",
+        "Winner: ₹TBA (Cash Prize)",
+        "Runner-up: ₹TBA (Cash Prize)",
         "Every participant will receive a Participation Certificate."
       ],
       tagline: "Think Smart. Prompt Better. Build the Future!",
@@ -304,8 +304,8 @@ const CONFIG = {
         "Time Management & Overall Impact – 10 Marks"
       ],
       prizes: [
-        "Winner Team: ₹2,000 Cash Prize + Certificates",
-        "Best Speaker Award: ₹1,000 Cash Prize + Certificate",
+        "Winner Team: ₹TBA Cash Prize + Certificates",
+        "Best Speaker Award: ₹TBA Cash Prize + Certificate",
         "Participants: Certificates"
       ],
       tagline: "Think. Speak. Convince. Win.",
