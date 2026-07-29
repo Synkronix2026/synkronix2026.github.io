@@ -47,7 +47,7 @@ const CONFIG = {
       fee: "₹250",
       feeAmount: 250,
       image: "https://placehold.co/900x500/12151C/5B8DEF?text=Code+Auction",
-      razorpayLink: "#",
+      razorpayLink: "https://forms.gle/QTYrbegcb9HYNDLP6",
       registrationFormLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
     },
 
@@ -109,7 +109,7 @@ const CONFIG = {
       fee: "₹250",
       feeAmount: 250,
       image: "https://placehold.co/900x500/12151C/5B8DEF?text=PaperExpo",
-      razorpayLink: "#"
+      razorpayLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
     },
 
     // ---- Prompt Clash ----
@@ -177,7 +177,7 @@ const CONFIG = {
       fee: "₹250",
       feeAmount: 250,
       image: "https://placehold.co/900x500/12151C/5B8DEF?text=Prompt+Clash",
-      razorpayLink: "#",
+      razorpayLink: "https://forms.gle/QTYrbegcb9HYNDLP6",
       registrationFormLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
     },
 
@@ -220,7 +220,7 @@ const CONFIG = {
       fee: "₹250",
       feeAmount: 250,
       image: "https://placehold.co/900x500/12151C/FFC857?text=Escape+Room",
-      razorpayLink: "#",
+      razorpayLink: "https://forms.gle/QTYrbegcb9HYNDLP6",
       registrationFormLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
     },
 
@@ -260,7 +260,7 @@ const CONFIG = {
       fee: "₹250",
       feeAmount: 250,
       image: "https://placehold.co/900x500/12151C/FFC857?text=Mission+Impossible",
-      razorpayLink: "#",
+      razorpayLink: "https://forms.gle/QTYrbegcb9HYNDLP6",
       registrationFormLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
     },
 
@@ -312,7 +312,7 @@ const CONFIG = {
       fee: "₹250",
       feeAmount: 250,
       image: "https://placehold.co/900x500/12151C/FFC857?text=Kadhaikkum+Kalam",
-      razorpayLink: "#",
+      razorpayLink: "https://forms.gle/QTYrbegcb9HYNDLP6",
       registrationFormLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
     }
 
