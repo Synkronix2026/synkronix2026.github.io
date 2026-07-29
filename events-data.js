@@ -5,7 +5,7 @@ const CONFIG = {
   deptName:         "Department of Computer Science & Engineering ",
   eventDateISO:     "2026-09-11T09:00:00",
   eventDateDisplay: "11 September 2026",
-  venue:            "Main Auditorium, Anna University Regional Campus Madurai",
+  venue:            "Ground Floor Conference hall, Anna University Regional Campus Madurai",
   contactEmail:     "synkronix.26@gmail.com",
   instagramUrl:     "https://www.instagram.com/synkronix_26",
   linkedinUrl:      "https://www.linkedin.com/company/synkronix-26",
