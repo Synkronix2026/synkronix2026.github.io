@@ -31,6 +31,7 @@
       font-family: var(--body);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
     a { color: inherit; text-decoration: none; }
 
@@ -73,6 +74,9 @@
       align-items: center;
       gap: 0.3rem;
       margin-left: 66px; /* clears hamburger */
+      white-space: nowrap;
+      overflow: hidden;
+      max-width: calc(100vw - 140px);
     }
     .logo span { color: var(--signal); }
     #navLinks {
@@ -348,27 +352,61 @@
       display: flex; flex-direction: column; align-items: flex-start;
       gap: 0.5rem; margin-bottom: 2rem;
     }
+
+    /* --- College identity block: logo + name/dept --- */
+    .hero-college-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .hero-logo {
+      width: 62px;
+      height: 62px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 14px rgba(91,141,239,0.35));
+    }
+    .hero-college-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
     .hero-college {
-      font-family: var(--mono); font-size: 0.82rem;
-      letter-spacing: 0.13em; text-transform: uppercase;
-      color: var(--signal); margin: 0; line-height: 1.4;
+      font-family: var(--display);
+      font-size: clamp(1.15rem, 2.6vw, 1.6rem);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin: 0;
+      line-height: 1.3;
+      text-align: left;
     }
     .hero-dept {
-      font-family: var(--mono); font-size: 0.78rem;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--text-dim); margin: 0; line-height: 1.4;
+      font-family: var(--body);
+      font-size: clamp(1rem, 2vw, 1.22rem);
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--text-dim);
+      margin: 0;
+      line-height: 1.4;
+      text-align: left;
+      max-width: 46ch;
     }
     .hero-presents {
       font-family: var(--mono); font-size: 0.72rem;
       letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--text-dim); margin: 0.4rem 0 0.8rem 0;
+      color: var(--text-dim); margin: 0.5rem 0 0.8rem 0;
       line-height: 1; opacity: 0.7;
     }
     .hero h1 {
       font-family: var(--display);
-      font-size: clamp(2.8rem, 8.5vw, 5.5rem);
+      font-size: clamp(1.6rem, 9vw, 5.5rem);
       line-height: 1.05; margin: 0 0 0.6rem 0;
       letter-spacing: -0.01em; text-align: left; align-self: flex-start;
+      white-space: nowrap;
+      max-width: 100%;
     }
     #heroTitle {
       background: linear-gradient(135deg, #FFFFFF 20%, var(--signal) 65%, var(--pulse) 100%);
@@ -454,7 +492,13 @@
       font-family: var(--mono); font-size: 0.78rem; color: var(--signal);
       text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 0.6rem;
     }
-    h2 { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 0 0 1rem 0; }
+    h2 {
+      font-family: var(--display);
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      font-weight: 900;
+      letter-spacing: 0.01em;
+      margin: 0 0 1rem 0;
+    }
     .section-sub { color: var(--text-dim); max-width: 60ch; margin: 0 0 2.5rem 0; line-height: 1.6; }
 
     .counter-section { padding-top: 3rem; padding-bottom: 3rem; }
@@ -546,14 +590,17 @@
 
     @media (max-width: 640px) {
       .hero { min-height: auto; padding: 7rem 6% 3rem; }
-      .hero-text-block { gap: 0.25rem; margin-bottom: 1.4rem; }
-      .hero-college { font-size: 0.72rem; }
-      .hero-dept { font-size: 0.7rem; }
-      .hero-presents { font-size: 0.66rem; margin: 0.1rem 0 0.4rem 0; }
+      .hero-text-block { gap: 0.35rem; margin-bottom: 1.4rem; }
+      .hero-college-row { gap: 0.7rem; }
+      .hero-logo { width: 46px; height: 46px; }
+      .hero-college { font-size: 1rem; }
+      .hero-dept { font-size: 0.86rem; }
+      .hero-presents { font-size: 0.66rem; margin: 0.3rem 0 0.4rem 0; }
       .hero-meta { gap: 1.4rem; }
       .cta-row { flex-direction: column; align-items: stretch; }
       .cta-row .btn { width: 100%; text-align: center; }
       section { padding: 3.5rem 6% 4rem; }
+      h2 { font-size: clamp(1.9rem, 8vw, 2.6rem); }
       .track-choice { flex-direction: column; }
       .cat-btn { padding: 2rem 1.5rem; min-width: auto; }
       .contact-grid { grid-template-columns: 1fr; }
@@ -562,7 +609,11 @@
       .counter-value { font-size: clamp(1.5rem, 7vw, 2rem); }
       .counter-label { font-size: 0.64rem; letter-spacing: 0.06em; }
       .countdown .cd-sep { display: none; }
-      .logo { margin-left: 60px; font-size: 1rem; }
+      .logo { margin-left: 60px; font-size: 0.85rem; max-width: calc(100vw - 120px); }
+    }
+
+    @media (max-width: 380px) {
+      .hero h1 { font-size: 8vw; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -615,8 +666,19 @@
 
     <div class="hero">
       <div class="hero-text-block">
-        <p class="hero-college" id="heroCollege"></p>
-        <p class="hero-dept" id="heroDept"></p>
+        <div class="hero-college-row">
+          <img
+            class="hero-logo"
+            src="https://raw.githubusercontent.com/Synkronix2026/synkronix2026.github.io/main/anna-university-logo.png"
+            alt="Anna University Logo"
+            loading="eager"
+            decoding="async"
+          >
+          <div class="hero-college-text">
+            <p class="hero-college" id="heroCollege"></p>
+            <p class="hero-dept" id="heroDept"></p>
+          </div>
+        </div>
         <p class="hero-presents">presents</p>
       </div>
       <h1 id="heroTitle" class="neon-title"></h1>
@@ -747,7 +809,9 @@
       document.getElementById("navLogo").appendChild(navLogoName);
       
       document.getElementById("heroCollege").textContent = CONFIG.collegeName;
-      document.getElementById("heroDept").textContent = CONFIG.deptName;
+      // Full department text including AI/ML department, as requested
+      document.getElementById("heroDept").textContent =
+        "Department of Computer Science & Engineering and Computer Science & Engineering (AI & ML)";
       document.getElementById("heroTitle").textContent = CONFIG.eventName;
       document.getElementById("heroTagline").textContent = CONFIG.eventTagline;
       document.getElementById("metaDate").textContent = CONFIG.eventDateDisplay;
@@ -760,7 +824,8 @@
       document.getElementById("footerLinkedin").href = CONFIG.linkedinUrl;
       document.getElementById("contactSectionEmail").textContent = CONFIG.contactEmail;
       document.getElementById("contactSectionEmail").href = "mailto:" + CONFIG.contactEmail;
-      document.getElementById("contactSectionCollege").textContent = CONFIG.deptName;
+      document.getElementById("contactSectionCollege").textContent =
+        "CSE & CSE (AI & ML)";
       document.getElementById("contactSectionVenue").textContent = CONFIG.venue;
       document.getElementById("contactSectionInsta").href = CONFIG.instagramUrl;
       document.getElementById("contactSectionLinkedin").href = CONFIG.linkedinUrl;
