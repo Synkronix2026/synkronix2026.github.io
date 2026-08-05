@@ -668,6 +668,194 @@
       .reveal { opacity: 1; transform: none; transition: none; }
       .map-static-icon { animation: none; }
     }
+    section {
+  position: relative;
+}
+
+section:not(.counter-section)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 5%;
+  width: min(180px, 34%);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--signal),
+    rgba(255, 200, 87, 0.65),
+    transparent
+  );
+  box-shadow: 0 0 14px rgba(91, 141, 239, 0.4);
+}
+
+/* Larger section labels */
+section .section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: clamp(0.78rem, 1.4vw, 0.95rem);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  margin-bottom: 0.9rem;
+}
+
+section .section-label::after {
+  content: "";
+  display: block;
+  width: min(125px, 28vw);
+  height: 1px;
+  background: linear-gradient(90deg, var(--signal), transparent);
+  opacity: 0.8;
+}
+
+/* Larger, premium section headings */
+section h2 {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  font-size: clamp(3rem, 7vw, 5.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  margin: 0 0 1.45rem;
+  padding-bottom: 1.15rem;
+  color: var(--text);
+  text-shadow: 0 6px 30px rgba(91, 141, 239, 0.13);
+}
+
+/* Neon underline below every section heading */
+section h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: min(150px, 56%);
+  height: 4px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--signal), var(--pulse), transparent);
+  box-shadow:
+    0 0 12px rgba(91, 141, 239, 0.75),
+    0 0 24px rgba(255, 200, 87, 0.25);
+}
+
+/* Gradient text enhancement where supported */
+@supports (-webkit-background-clip: text) {
+  section h2 {
+    background: linear-gradient(
+      105deg,
+      #ffffff 5%,
+      #dfe8ff 45%,
+      var(--signal) 78%,
+      var(--pulse) 115%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* Larger and more attractive hero tagline */
+.hero .tagline {
+  position: relative;
+  max-width: 42ch;
+  font-size: clamp(1.3rem, 3.2vw, 1.85rem);
+  font-weight: 600;
+  line-height: 1.5;
+  color: #c6ced9;
+  margin: 0 0 2.6rem;
+  padding: 0.35rem 0 0.35rem 1.15rem;
+  border-left: 3px solid var(--signal);
+  text-shadow: 0 3px 20px rgba(91, 141, 239, 0.12);
+}
+
+.hero .tagline::before {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: 0;
+  width: 3px;
+  height: 42%;
+  border-radius: 4px;
+  background: var(--pulse);
+  box-shadow: 0 0 14px rgba(255, 200, 87, 0.75);
+}
+
+/* Improve intro paragraph readability */
+.section-sub {
+  max-width: 68ch;
+  font-size: clamp(1.12rem, 2vw, 1.3rem);
+  font-weight: 500;
+  line-height: 1.7;
+  color: #b4bdca;
+}
+
+/* More polished cards across the site */
+.counter-card,
+.cat-btn,
+.contact-card,
+.loc-card,
+.map-card {
+  border-color: rgba(91, 141, 239, 0.22);
+}
+
+.counter-card:hover,
+.cat-btn:hover,
+.contact-card:hover,
+.loc-card:hover,
+.map-card:hover {
+  border-color: rgba(91, 141, 239, 0.78);
+}
+
+/* Improve hero metadata visual hierarchy */
+.hero-meta > div {
+  padding-left: 0.9rem;
+  border-left: 2px solid rgba(91, 141, 239, 0.5);
+}
+
+.hero-meta > div:nth-child(2) {
+  border-left-color: rgba(255, 200, 87, 0.65);
+}
+
+.hero-meta strong {
+  letter-spacing: 0.02em;
+}
+
+/* Mobile heading sizing */
+@media (max-width: 640px) {
+  section h2 {
+    font-size: clamp(2.45rem, 11vw, 3.3rem);
+    line-height: 1.08;
+    padding-bottom: 0.95rem;
+    margin-bottom: 1.2rem;
+  }
+
+  section h2::after {
+    width: min(115px, 55%);
+    height: 3px;
+  }
+
+  section .section-label {
+    font-size: 0.76rem;
+    letter-spacing: 0.14em;
+  }
+
+  .hero .tagline {
+    font-size: clamp(1.18rem, 5vw, 1.45rem);
+    line-height: 1.5;
+    padding-left: 0.9rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-sub {
+    font-size: 1.08rem;
+    line-height: 1.65;
+  }
+
+  .hero-meta > div {
+    padding-left: 0.65rem;
+  }
+}
+    
   </style>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpolygon points='4,4 4,28 20,20' fill='%235B8DEF' stroke='%23BFE3FF' stroke-width='1.5'/%3E%3C/svg%3E" type="image/svg+xml">
 </head>
