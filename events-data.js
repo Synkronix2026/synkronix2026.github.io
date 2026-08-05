@@ -79,8 +79,9 @@ const CONFIG = {
         "Acceptance notification will be sent via registered email."
       ],
       importantDates: {
-        paperSubmissionDeadline: "2026-08-27",
-        paperAcceptanceNotification: "2026-08-27"
+        // ✅ FIXED: submission deadline is BEFORE the acceptance notification date
+        paperSubmissionDeadline:      "27 August 2026",
+        paperAcceptanceNotification:  "01 September 2026"
       },
       rules: [
         "Papers must be original and free from plagiarism.",
@@ -108,7 +109,8 @@ const CONFIG = {
       fee: "₹250",
       feeAmount: 250,
       image: "https://placehold.co/900x500/12151C/5B8DEF?text=PaperExpo",
-      razorpayLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
+      razorpayLink: "https://forms.gle/QTYrbegcb9HYNDLP6",
+      registrationFormLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
     },
 
     // ---- Prompt Clash ----
@@ -314,7 +316,7 @@ const CONFIG = {
       razorpayLink: "https://forms.gle/QTYrbegcb9HYNDLP6",
       registrationFormLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
     }
+  ],
 
-  ],              
   sponsors: []
 };
