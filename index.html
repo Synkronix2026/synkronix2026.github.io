@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>SYNKRONIX '26 — CSE Symposium</title>
-  <meta name="description" content="SYNKRONIX '26 — the annual Computer Science & Engineering symposium. 3 technical and 3 non-technical events.">
-  <script src="events-data.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=JetBrains+Mono:wght@400;500;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
+<style>
     :root {
       --ink: #0A0C10;
       --panel: #12151C;
@@ -86,8 +75,12 @@
       list-style: none; display: flex; gap: 2rem;
     }
     nav a {
-      color: var(--text-dim); font-size: 0.92rem; font-weight: 500;
-      transition: color 0.2s ease; position: relative;
+      color: var(--text-dim);
+      font-size: 1.05rem;
+      font-weight: 700;
+      font-family: var(--body);
+      transition: color 0.2s ease;
+      position: relative;
     }
     nav a:hover, nav a:focus-visible { color: var(--text); }
     nav a.active { color: var(--text); }
@@ -195,10 +188,16 @@
     }
     .drawer-nav-links.hidden { display: none; }
     .drawer-nav-links a {
-      color: var(--text-dim); font-family: var(--mono); font-size: 0.84rem;
-      padding: 0.6rem 0.75rem; border-radius: 6px;
+      color: var(--text-dim);
+      font-family: var(--display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 0.75rem 0.85rem;
+      border-radius: 6px;
       transition: background 0.15s, color 0.15s, padding-left 0.15s;
-      display: flex; align-items: center; gap: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
     .drawer-nav-links a:hover {
       background: rgba(91,141,239,0.1); color: var(--text); padding-left: 0.9rem;
@@ -294,14 +293,7 @@
       text-align: left;
       margin: 0;
     }
-    .drawer-back .item-fee {
-      font-family: var(--mono);
-      font-size: 0.74rem;
-      color: var(--pulse);
-      margin-top: 0.4rem;
-      text-align: left;
-    }
-    /* No Razorpay button in drawer – using a simple link to event details */
+    /* Fee line removed from flip card per request — button now stands alone */
     .drawer-back .btn-small {
       display: inline-flex;
       align-items: center;
@@ -395,10 +387,15 @@
       max-width: 46ch;
     }
     .hero-presents {
-      font-family: var(--mono); font-size: 0.72rem;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--text-dim); margin: 0.5rem 0 0.8rem 0;
-      line-height: 1; opacity: 0.7;
+      font-family: var(--display);
+      font-size: clamp(1.1rem, 2.6vw, 1.6rem);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--signal);
+      margin: 0.6rem 0 1rem 0;
+      line-height: 1.2;
+      opacity: 0.95;
     }
     .hero h1 {
       font-family: var(--display);
@@ -595,7 +592,7 @@
       .hero-logo { width: 46px; height: 46px; }
       .hero-college { font-size: 1rem; }
       .hero-dept { font-size: 0.86rem; }
-      .hero-presents { font-size: 0.66rem; margin: 0.3rem 0 0.4rem 0; }
+      .hero-presents { font-size: clamp(0.95rem, 5vw, 1.2rem); margin: 0.4rem 0 0.7rem 0; }
       .hero-meta { gap: 1.4rem; }
       .cta-row { flex-direction: column; align-items: stretch; }
       .cta-row .btn { width: 100%; text-align: center; }
@@ -619,428 +616,4 @@
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
     }
-  </style>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpolygon points='4,4 4,28 20,20' fill='%235B8DEF' stroke='%23BFE3FF' stroke-width='1.5'/%3E%3C/svg%3E" type="image/svg+xml">
-</head>
-<body>
-  <div class="loading-screen" id="loadingScreen">
-    <div class="terminal-boot">
-      <pre id="bootLines"></pre><span class="boot-cursor">▌</span>
-    </div>
-  </div>
-
-  <canvas id="netCanvas"></canvas>
-
-  <button class="global-menu-toggle" id="globalMenuToggle" aria-expanded="false" aria-controls="eventsDrawer" aria-label="Open menu">
-    <span class="bars"><span></span><span></span><span></span></span>
-  </button>
-
-  <div class="drawer-overlay" id="drawerOverlay"></div>
-
-  <div class="events-drawer" id="eventsDrawer" role="dialog" aria-label="Navigation and events">
-    <div class="drawer-header">
-      <span id="drawerTitle">SYNKRONIX '26</span>
-      <button class="drawer-close" id="drawerClose" aria-label="Close menu">✕</button>
-    </div>
-    <nav class="drawer-nav-links" id="drawerNavLinks" aria-label="Page sections">
-      <a href="#about" data-drawer-link>About</a>
-      <a href="#events" data-drawer-link>Events</a>
-      <a href="#contact" data-drawer-link>Contact</a>
-    </nav>
-    <button class="drawer-back-btn hidden" id="drawerBackBtn">← Back to menu</button>
-    <div class="drawer-list" id="drawerEventList"></div>
-  </div>
-
-  <header>
-    <nav>
-      <div class="logo" id="navLogo"><span>▲</span></div>
-      <div id="navLinks">
-        <ul id="navLinksList">
-          <li><a href="#about">About</a></li>
-          <li><a href="#events">Events</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <a class="btn nav-cta" href="#events">See events</a>
-      </div>
-    </nav>
-
-    <div class="hero">
-      <div class="hero-text-block">
-        <div class="hero-college-row">
-          <img
-            class="hero-logo"
-            src="https://raw.githubusercontent.com/Synkronix2026/synkronix2026.github.io/main/anna-university-logo.png"
-            alt="Anna University Logo"
-            loading="eager"
-            decoding="async"
-          >
-          <div class="hero-college-text">
-            <p class="hero-college" id="heroCollege"></p>
-            <p class="hero-dept" id="heroDept"></p>
-          </div>
-        </div>
-        <p class="hero-presents">presents</p>
-      </div>
-      <h1 id="heroTitle" class="neon-title"></h1>
-      <p class="tagline" id="heroTagline"></p>
-      <div class="hero-meta">
-        <div><strong id="metaDate"></strong>Date</div>
-        <div><strong id="metaVenue"></strong>Venue</div>
-        <div><strong>6</strong>Events</div>
-      </div>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#events">Browse events</a>
-      </div>
-      <div class="countdown-wrap">
-        <div class="countdown-label">Countdown to kickoff</div>
-        <div class="countdown" id="countdown" role="timer" aria-live="off">
-          <div class="cd-unit"><span class="cd-value" id="cdDays">00</span><span class="cd-unit-label">Days</span></div>
-          <span class="cd-sep">:</span>
-          <div class="cd-unit"><span class="cd-value" id="cdHours">00</span><span class="cd-unit-label">Hrs</span></div>
-          <span class="cd-sep">:</span>
-          <div class="cd-unit"><span class="cd-value" id="cdMins">00</span><span class="cd-unit-label">Min</span></div>
-          <span class="cd-sep">:</span>
-          <div class="cd-unit"><span class="cd-value" id="cdSecs">00</span><span class="cd-unit-label">Sec</span></div>
-          <span class="cd-ms" id="cdMillis">.000</span>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section id="counter" class="counter-section" aria-label="Event stats">
-      <div class="counter-grid">
-        <div class="counter-card reveal">
-          <div class="counter-value" data-count-to="6" id="countTotal">0</div>
-          <div class="counter-label">Total events</div>
-        </div>
-        <div class="counter-card reveal">
-          <div class="counter-value" data-count-to="0" id="countTech">0</div>
-          <div class="counter-label">Technical</div>
-        </div>
-        <div class="counter-card pulse reveal">
-          <div class="counter-value" data-count-to="0" id="countNonTech">0</div>
-          <div class="counter-label">Non-Technical</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="reveal">
-      <div class="section-label">About</div>
-      <h2>One day. In sync.</h2>
-      <p class="section-sub">
-        SYNKRONIX'26 is where innovation, creativity, and competition come together. Join aspiring minds from across colleges to showcase your talent, solve exciting challenges, exchange ideas, and create unforgettable memories through a thrilling blend of technical and non-technical events. Where Ideas Synchronize and Innovation Begins.
-      </p>
-    </section>
-
-    <section id="events">
-      <div class="section-label">Events</div>
-      <h2>Pick your track</h2>
-      <p class="section-sub">Two tracks. Six events. Choose your arena — each track takes you to detailed event listings.</p>
-      <div class="events-track reveal">
-        <div class="track-choice">
-          <a class="cat-btn" href="#" id="techTrackBtn" data-track="Technical">
-            <span class="cat-icon">⌁</span>
-            <span class="cat-label">Technical</span>
-            <span class="cat-sub">Code. Build. Compete.</span>
-            <span class="cat-count" id="techTrackCount">3 events</span>
-          </a>
-          <a class="cat-btn" href="#" id="nonTechTrackBtn" data-track="Non-Technical">
-            <span class="cat-icon" style="color: var(--pulse);">✺</span>
-            <span class="cat-label">Non-Technical</span>
-            <span class="cat-sub">Create. Perform. Play.</span>
-            <span class="cat-count" style="color: var(--pulse);" id="nonTechTrackCount">3 events</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="reveal">
-      <div class="section-label">Contact</div>
-      <h2>Get in touch</h2>
-      <p class="section-sub">Questions about registration, events, or anything else — reach the organizing team below.</p>
-      <div class="contact-grid">
-        <div class="contact-card reveal">
-          <span class="card-icon">✉</span>
-          <span class="card-label">Email</span>
-          <a class="card-value" id="contactSectionEmail" href="#"></a>
-        </div>
-        <div class="contact-card reveal">
-          <span class="card-icon">◈</span>
-          <span class="card-label">Department</span>
-          <span class="card-value" id="contactSectionCollege"></span>
-        </div>
-        <div class="contact-card reveal">
-          <span class="card-icon">▣</span>
-          <span class="card-label">Venue</span>
-          <span class="card-value" id="contactSectionVenue"></span>
-        </div>
-        <div class="contact-card reveal">
-          <span class="card-icon">▤</span>
-          <span class="card-label">Follow</span>
-          <span class="card-value">
-            <a id="contactSectionInsta" href="#" target="_blank" rel="noopener">Instagram</a> ·
-            <a id="contactSectionLinkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
-          </span>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p id="footerCollege"></p>
-    <div class="footer-contact-grid">
-      <span>✉ <a id="footerEmail" href="synkronix.26@gmail.com"></a></span>
-      <span>◈ <span id="footerVenue"></span></span>
-      <span><a id="footerInsta" href="#" target="_blank" rel="noopener">Instagram</a></span>
-      <span><a id="footerLinkedin" href="#" target="_blank" rel="noopener">LinkedIn</a></span>
-    </div>
-    <p style="margin-top:1rem; opacity:0.6;">Made With 💖 By Synkronix26' Tech Support Team</p>
-  </footer>
-
-  <script src="ui-effects.js"></script>
-  <script>
-    (function() {
-      document.title = CONFIG.eventName + " — CSE Symposium";
-      
-      const navLogoName = document.createElement("span");
-      navLogoName.className = "neon-title";
-      navLogoName.textContent = " " + CONFIG.eventName;
-      document.getElementById("navLogo").appendChild(navLogoName);
-      
-      document.getElementById("heroCollege").textContent = CONFIG.collegeName;
-      // Full department text including AI/ML department, as requested
-      document.getElementById("heroDept").textContent =
-        "Department of Computer Science & Engineering and Computer Science & Engineering (AI & ML)";
-      document.getElementById("heroTitle").textContent = CONFIG.eventName;
-      document.getElementById("heroTagline").textContent = CONFIG.eventTagline;
-      document.getElementById("metaDate").textContent = CONFIG.eventDateDisplay;
-      document.getElementById("metaVenue").textContent = CONFIG.venue;
-      document.getElementById("footerCollege").textContent = CONFIG.collegeName;
-      document.getElementById("footerEmail").textContent = CONFIG.contactEmail;
-      document.getElementById("footerEmail").href = "mailto:" + CONFIG.contactEmail;
-      document.getElementById("footerVenue").textContent = CONFIG.venue;
-      document.getElementById("footerInsta").href = CONFIG.instagramUrl;
-      document.getElementById("footerLinkedin").href = CONFIG.linkedinUrl;
-      document.getElementById("contactSectionEmail").textContent = CONFIG.contactEmail;
-      document.getElementById("contactSectionEmail").href = "mailto:" + CONFIG.contactEmail;
-      document.getElementById("contactSectionCollege").textContent =
-        "CSE & CSE (AI & ML)";
-      document.getElementById("contactSectionVenue").textContent = CONFIG.venue;
-      document.getElementById("contactSectionInsta").href = CONFIG.instagramUrl;
-      document.getElementById("contactSectionLinkedin").href = CONFIG.linkedinUrl;
-
-      const techEvents = CONFIG.events.filter(e => e.category === "Technical").slice(0, 3);
-      const nonTechEvents = CONFIG.events.filter(e => e.category === "Non-Technical").slice(0, 3);
-      const allEvents = [...techEvents, ...nonTechEvents];
-      
-      document.getElementById("techTrackCount").textContent = techEvents.length + " events";
-      document.getElementById("nonTechTrackCount").textContent = nonTechEvents.length + " events";
-      document.getElementById("countTech").dataset.countTo = techEvents.length;
-      document.getElementById("countNonTech").dataset.countTo = nonTechEvents.length;
-
-      function animateCount(el) {
-        const target = parseInt(el.dataset.countTo, 10) || 0;
-        const duration = 1000;
-        const start = performance.now();
-        function step(now) {
-          const progress = Math.min(1, (now - start) / duration);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          el.textContent = Math.round(eased * target);
-          if (progress < 1) requestAnimationFrame(step);
-          else el.textContent = target;
-        }
-        requestAnimationFrame(step);
-      }
-
-      const counterCards = document.querySelectorAll(".counter-value[data-count-to]");
-      if ("IntersectionObserver" in window) {
-        const counterObserver = new IntersectionObserver((entries, obs) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              animateCount(entry.target);
-              obs.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.4 });
-        counterCards.forEach(el => counterObserver.observe(el));
-      } else {
-        counterCards.forEach(animateCount);
-      }
-
-      // No sponsors – removed
-
-      const countdownWrap = document.getElementById("countdown");
-      const cdDays = document.getElementById("cdDays");
-      const cdHours = document.getElementById("cdHours");
-      const cdMins = document.getElementById("cdMins");
-      const cdSecs = document.getElementById("cdSecs");
-      const cdMillis = document.getElementById("cdMillis");
-      const pad = (n) => String(Math.max(0, n)).padStart(2, "0");
-      const padMs = (n) => String(Math.max(0, n)).padStart(3, "0");
-      let lastSec = -1;
-      
-      function updateCountdown() {
-        const diff = new Date(CONFIG.eventDateISO) - new Date();
-        if (diff <= 0) {
-          countdownWrap.innerHTML = '<span class="cd-done">🎉 Happening now</span>';
-          return;
-        }
-        const totalSec = Math.floor(diff / 1000);
-        const ms = diff % 1000;
-        cdDays.textContent = pad(Math.floor(totalSec / 86400));
-        cdHours.textContent = pad(Math.floor((totalSec % 86400) / 3600));
-        cdMins.textContent = pad(Math.floor((totalSec % 3600) / 60));
-        cdSecs.textContent = pad(totalSec % 60);
-        cdMillis.textContent = "." + padMs(ms);
-        if (totalSec % 60 !== lastSec) {
-          lastSec = totalSec % 60;
-          cdSecs.classList.remove("tick");
-          void cdSecs.offsetWidth;
-          cdSecs.classList.add("tick");
-        }
-        requestAnimationFrame(updateCountdown);
-      }
-      requestAnimationFrame(updateCountdown);
-
-      // Drawer logic with event filtering
-      const drawer = document.getElementById("eventsDrawer");
-      const drawerOverlay = document.getElementById("drawerOverlay");
-      const drawerToggle = document.getElementById("globalMenuToggle");
-      const drawerClose = document.getElementById("drawerClose");
-      const drawerNavLinks = document.getElementById("drawerNavLinks");
-      const drawerBackBtn = document.getElementById("drawerBackBtn");
-      const drawerEventList = document.getElementById("drawerEventList");
-      
-      let lastFocused = null;
-
-      function showNavLinks() {
-        drawerNavLinks.classList.remove("hidden");
-        drawerBackBtn.classList.add("hidden");
-        drawerEventList.innerHTML = "";
-      }
-
-      function showFilteredEvents(category) {
-        drawerNavLinks.classList.add("hidden");
-        drawerBackBtn.classList.remove("hidden");
-        const filtered = allEvents.filter(e => e.category === category);
-        if (typeof UIEffects !== 'undefined' && UIEffects.renderEventsList) {
-          UIEffects.renderEventsList(drawerEventList, null, filtered, category);
-        }
-      }
-
-      function openDrawer() {
-        lastFocused = document.activeElement;
-        drawer.classList.add("open");
-        drawerOverlay.classList.add("open");
-        requestAnimationFrame(() => drawerOverlay.classList.add("show"));
-        drawerToggle.classList.add("open");
-        drawerToggle.setAttribute("aria-expanded", "true");
-        document.documentElement.classList.add("ui-no-scroll");
-        showNavLinks();
-        if (drawerClose) drawerClose.focus();
-      }
-
-      function closeDrawer() {
-        drawer.classList.remove("open");
-        drawerOverlay.classList.remove("show");
-        drawerToggle.classList.remove("open");
-        drawerToggle.setAttribute("aria-expanded", "false");
-        document.documentElement.classList.remove("ui-no-scroll");
-        setTimeout(() => drawerOverlay.classList.remove("open"), 260);
-        if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
-        showNavLinks();
-      }
-
-      drawerToggle.addEventListener("click", () => {
-        drawer.classList.contains("open") ? closeDrawer() : openDrawer();
-      });
-      drawerOverlay.addEventListener("click", closeDrawer);
-      if (drawerClose) drawerClose.addEventListener("click", closeDrawer);
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && drawer.classList.contains("open")) closeDrawer();
-      });
-      drawer.querySelectorAll("[data-drawer-link]").forEach(a => {
-        a.addEventListener("click", closeDrawer);
-      });
-      drawerBackBtn.addEventListener("click", showNavLinks);
-
-      document.getElementById("techTrackBtn").addEventListener("click", function(e) {
-        e.preventDefault();
-        openDrawer();
-        showFilteredEvents("Technical");
-      });
-      document.getElementById("nonTechTrackBtn").addEventListener("click", function(e) {
-        e.preventDefault();
-        openDrawer();
-        showFilteredEvents("Non-Technical");
-      });
-
-      if (typeof UIEffects !== 'undefined') {
-        if (UIEffects.initScrollReveal) UIEffects.initScrollReveal(".reveal");
-        if (UIEffects.initScrollSpy) {
-          UIEffects.initScrollSpy("#navLinksList a, .drawer-nav-links a[href^='#']", "section[id]");
-        }
-      }
-
-      const canvas = document.getElementById("netCanvas");
-      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (canvas && !reduceMotion) {
-        const ctx = canvas.getContext("2d");
-        let w, h, nodes, blobs;
-        function resize() {
-          w = canvas.width = window.innerWidth;
-          h = canvas.height = Math.max(window.innerHeight, 800);
-        }
-        function initNodes() {
-          const count = Math.min(80, Math.floor((w * h) / 24000));
-          nodes = Array.from({ length: count }, () => ({
-            x: Math.random() * w, y: Math.random() * h,
-            vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35,
-            phase: Math.random() * Math.PI * 2, amber: Math.random() < 0.12
-          }));
-          blobs = [
-            { x: w * 0.2, y: h * 0.3, r: Math.max(w, h) * 0.38, vx: 0.05, vy: 0.03, color: "91,141,239" },
-            { x: w * 0.78, y: h * 0.65, r: Math.max(w, h) * 0.32, vx: -0.04, vy: 0.04, color: "255,200,87" }
-          ];
-        }
-        resize(); initNodes();
-        window.addEventListener("resize", () => { resize(); initNodes(); });
-        function tick(t) {
-          ctx.clearRect(0, 0, w, h);
-          for (const b of blobs) {
-            b.x += b.vx; b.y += b.vy;
-            if (b.x < -b.r || b.x > w + b.r) b.vx *= -1;
-            if (b.y < -b.r || b.y > h + b.r) b.vy *= -1;
-            const grad = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r);
-            grad.addColorStop(0, `rgba(${b.color},0.06)`);
-            grad.addColorStop(1, `rgba(${b.color},0)`);
-            ctx.fillStyle = grad; ctx.fillRect(0, 0, w, h);
-          }
-          for (const n of nodes) {
-            n.x += n.vx; n.y += n.vy;
-            if (n.x < 0 || n.x > w) n.vx *= -1;
-            if (n.y < 0 || n.y > h) n.vy *= -1;
-            const twinkle = 0.5 + 0.5 * Math.sin((t || 0) / 800 + n.phase);
-            ctx.globalAlpha = twinkle;
-            ctx.fillStyle = n.amber ? "#FFC857" : "#5B8DEF";
-            ctx.beginPath(); ctx.arc(n.x, n.y, 1.5 + twinkle * 1, 0, Math.PI * 2); ctx.fill();
-          }
-          ctx.globalAlpha = 1;
-          ctx.strokeStyle = "rgba(91,141,239,0.12)";
-          for (let i = 0; i < nodes.length; i++) {
-            for (let j = i + 1; j < nodes.length; j++) {
-              const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
-              if (Math.sqrt(dx * dx + dy * dy) < 150) {
-                ctx.beginPath(); ctx.moveTo(nodes[i].x, nodes[i].y); ctx.lineTo(nodes[j].x, nodes[j].y); ctx.stroke();
-              }
-            }
-          }
-          requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-      }
-    })();
-  </script>
-</body>
-</html>
+</style>
