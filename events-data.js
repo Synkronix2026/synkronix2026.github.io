@@ -79,9 +79,8 @@ const CONFIG = {
         "Acceptance notification will be sent via registered email."
       ],
       importantDates: {
-        paperSubmissionDeadline: "TBA",
-        paperAcceptanceNotification: "TBA",
-        pptSubmissionAndRegistrationDeadline: "TBA"
+        paperSubmissionDeadline: "27-08-2026",
+        paperAcceptanceNotification: "31-08-2026"
       },
       rules: [
         "Papers must be original and free from plagiarism.",
