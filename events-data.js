@@ -81,7 +81,7 @@ const CONFIG = {
       importantDates: {
         // ✅ FIXED: submission deadline is BEFORE the acceptance notification date
         paperSubmissionDeadline:      "27 August 2026",
-        paperAcceptanceNotification:  "01 September 2026"
+        paperAcceptanceNotification:  "31 August 2026"
       },
       rules: [
         "Papers must be original and free from plagiarism.",
