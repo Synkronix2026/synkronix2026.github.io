@@ -9,7 +9,7 @@
 (function () {
   "use strict";
 
-  var audioCtx;
+  let audioCtx;
 
   function getAudioCtx() {
     audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
@@ -19,9 +19,9 @@
 
   function playClickSound() {
     try {
-      var ctx = getAudioCtx();
-      var o = ctx.createOscillator();
-      var g = ctx.createGain();
+      const ctx = getAudioCtx();
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
       o.type = "sine";
       o.frequency.setValueAtTime(760, ctx.currentTime);
       o.frequency.exponentialRampToValueAtTime(360, ctx.currentTime + 0.09);
@@ -36,11 +36,11 @@
 
   function playCyberBootSound() {
     try {
-      var ctx = getAudioCtx();
-      var now = ctx.currentTime;
+      const ctx = getAudioCtx();
+      const now = ctx.currentTime;
 
-      var sweep = ctx.createOscillator();
-      var sweepGain = ctx.createGain();
+      const sweep = ctx.createOscillator();
+      const sweepGain = ctx.createGain();
       sweep.type = "sawtooth";
       sweep.frequency.setValueAtTime(90, now);
       sweep.frequency.exponentialRampToValueAtTime(680, now + 0.9);
@@ -48,8 +48,8 @@
       sweepGain.gain.exponentialRampToValueAtTime(0.05, now + 0.15);
       sweepGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.95);
 
-      var layer = ctx.createOscillator();
-      var layerGain = ctx.createGain();
+      const layer = ctx.createOscillator();
+      const layerGain = ctx.createGain();
       layer.type = "square";
       layer.frequency.setValueAtTime(95, now);
       layer.frequency.exponentialRampToValueAtTime(690, now + 0.9);
@@ -57,7 +57,7 @@
       layerGain.gain.exponentialRampToValueAtTime(0.02, now + 0.15);
       layerGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.95);
 
-      var filter = ctx.createBiquadFilter();
+      const filter = ctx.createBiquadFilter();
       filter.type = "lowpass";
       filter.frequency.setValueAtTime(2200, now);
 
@@ -72,78 +72,71 @@
       layer.start(now);
       layer.stop(now + 0.95);
 
-      var blipTimes = [0.55, 1.2];
-      for (var bi = 0; bi < blipTimes.length; bi++) {
-        (function (t) {
-          var blip = ctx.createOscillator();
-          var blipGain = ctx.createGain();
-          blip.type = "square";
-          blip.frequency.setValueAtTime(1200, now + t);
-          blip.frequency.exponentialRampToValueAtTime(1900, now + t + 0.05);
-          blipGain.gain.setValueAtTime(0.0001, now + t);
-          blipGain.gain.exponentialRampToValueAtTime(0.045, now + t + 0.01);
-          blipGain.gain.exponentialRampToValueAtTime(0.0001, now + t + 0.09);
-          blip.connect(blipGain);
-          blipGain.connect(ctx.destination);
-          blip.start(now + t);
-          blip.stop(now + t + 0.09);
-        })(blipTimes[bi]);
-      }
+      [0.55, 1.2].forEach(function (t) {
+        const blip = ctx.createOscillator();
+        const blipGain = ctx.createGain();
+        blip.type = "square";
+        blip.frequency.setValueAtTime(1200, now + t);
+        blip.frequency.exponentialRampToValueAtTime(1900, now + t + 0.05);
+        blipGain.gain.setValueAtTime(0.0001, now + t);
+        blipGain.gain.exponentialRampToValueAtTime(0.045, now + t + 0.01);
+        blipGain.gain.exponentialRampToValueAtTime(0.0001, now + t + 0.09);
+        blip.connect(blipGain);
+        blipGain.connect(ctx.destination);
+        blip.start(now + t);
+        blip.stop(now + t + 0.09);
+      });
     } catch (e) {}
   }
 
   function spawnSparkles(x, y) {
-    var count = 8;
-    for (var i = 0; i < count; i++) {
-      var s = document.createElement("span");
+    const count = 8;
+    for (let i = 0; i < count; i++) {
+      const s = document.createElement("span");
       s.className = "ui-spark";
-      var angle = ((Math.PI * 2) / count) * i + Math.random() * 0.4;
-      var dist = 24 + Math.random() * 20;
+      const angle = ((Math.PI * 2) / count) * i + Math.random() * 0.4;
+      const dist = 24 + Math.random() * 20;
       s.style.setProperty("--dx", Math.cos(angle) * dist + "px");
       s.style.setProperty("--dy", Math.sin(angle) * dist + "px");
       s.style.left = x + "px";
       s.style.top = y + "px";
       document.body.appendChild(s);
-      (function (el) {
-        el.addEventListener("animationend", function () { el.remove(); });
-      })(s);
+      s.addEventListener("animationend", function () { s.remove(); });
     }
   }
 
   function spawnElectricBurst(x, y) {
-    var ring = document.createElement("span");
+    const ring = document.createElement("span");
     ring.className = "ui-electric-ring";
     ring.style.left = x + "px";
     ring.style.top = y + "px";
     document.body.appendChild(ring);
     ring.addEventListener("animationend", function () { ring.remove(); });
 
-    var boltCount = 6;
-    for (var i = 0; i < boltCount; i++) {
-      var bolt = document.createElement("span");
+    const boltCount = 6;
+    for (let i = 0; i < boltCount; i++) {
+      const bolt = document.createElement("span");
       bolt.className = "ui-electric-bolt";
-      var angle = ((Math.PI * 2) / boltCount) * i + Math.random() * 0.5;
-      var dist = 30 + Math.random() * 26;
+      const angle = ((Math.PI * 2) / boltCount) * i + Math.random() * 0.5;
+      const dist = 30 + Math.random() * 26;
       bolt.style.setProperty("--dx", Math.cos(angle) * dist + "px");
       bolt.style.setProperty("--dy", Math.sin(angle) * dist + "px");
       bolt.style.setProperty("--rot", (Math.random() * 360) + "deg");
       bolt.style.left = x + "px";
       bolt.style.top = y + "px";
       document.body.appendChild(bolt);
-      (function (el) {
-        el.addEventListener("animationend", function () { el.remove(); });
-      })(bolt);
+      bolt.addEventListener("animationend", function () { bolt.remove(); });
     }
   }
 
-  var EFFECT_SELECTOR = ".btn, .cat-btn, .global-menu-toggle, .drawer-flip, .drawer-close";
+  const EFFECT_SELECTOR = ".btn, .cat-btn, .global-menu-toggle, .drawer-flip, .drawer-close";
 
   document.addEventListener("click", function (e) {
     spawnElectricBurst(e.clientX, e.clientY);
-    var el = e.target.closest(EFFECT_SELECTOR);
+    const el = e.target.closest(EFFECT_SELECTOR);
     if (!el) return;
     playClickSound();
-    var rect = el.getBoundingClientRect();
+    const rect = el.getBoundingClientRect();
     spawnSparkles(rect.left + rect.width / 2, rect.top + rect.height / 2);
   });
 
@@ -151,17 +144,17 @@
     return "url(\"data:image/svg+xml," + encodeURIComponent(svg) + "\")";
   }
 
-  var triCursor =
+  const triCursor =
     '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">' +
     '<polygon points="2,2 2,25 18,17" fill="#5B8DEF" stroke="#BFE3FF" stroke-width="1.3"/>' +
     '</svg>';
 
-  var triCursorHover =
+  const triCursorHover =
     '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">' +
     '<polygon points="2,2 2,25 18,17" fill="#FFC857" stroke="#FFF3D6" stroke-width="1.3"/>' +
     '</svg>';
 
-  var cursorCssLines = [
+  const cursorCssLines = [
     'html, body { cursor: ' + buildCursorUrl(triCursor) + ' 2 2, auto; }',
     'a, button, .btn, .cat-btn, .global-menu-toggle, .drawer-flip, .drawer-close,',
     'input, select, textarea, [role="button"], summary, label {',
@@ -230,11 +223,11 @@
     '.back-to-top:hover { border-color:#5B8DEF; box-shadow:0 12px 26px -10px rgba(91,141,239,0.5); }'
   ];
 
-  var cursorStyle = document.createElement("style");
+  const cursorStyle = document.createElement("style");
   cursorStyle.textContent = cursorCssLines.join("\n");
   document.head.appendChild(cursorStyle);
 
-  var BOOT_LINES = [
+  const BOOT_LINES = [
     "> initializing SYNKRONIX '26 interface...",
     "> establishing secure connection...",
     "> connection established",
@@ -245,10 +238,10 @@
   ];
 
   function typeLine(container, text, cb) {
-    var lineEl = document.createElement("div");
+    const lineEl = document.createElement("div");
     container.appendChild(lineEl);
-    var i = 0;
-    (function step() {
+    let i = 0;
+    function step() {
       lineEl.textContent = text.slice(0, i);
       i++;
       if (i <= text.length) {
@@ -256,14 +249,15 @@
       } else {
         cb();
       }
-    })();
+    }
+    step();
   }
 
   function runBootSequence(onDone) {
-    var bootLines = document.getElementById("bootLines");
+    const bootLines = document.getElementById("bootLines");
     if (!bootLines) { onDone(); return; }
-    var idx = 0;
-    (function nextLine() {
+    let idx = 0;
+    function nextLine() {
       if (idx >= BOOT_LINES.length) {
         setTimeout(onDone, 350);
         return;
@@ -272,15 +266,16 @@
         idx++;
         setTimeout(nextLine, 140);
       });
-    })();
+    }
+    nextLine();
   }
 
-  var BOOT_SEEN_KEY = "synkronix26_boot_seen_v3";
+  const BOOT_SEEN_KEY = "synkronix26_boot_seen_v3";
 
   function hideLoadingScreen() {
-    var el = document.getElementById("loadingScreen");
+    const el = document.getElementById("loadingScreen");
     if (!el) return;
-    var firstVisit = false;
+    let firstVisit = false;
     try {
       firstVisit = !window.localStorage.getItem(BOOT_SEEN_KEY);
     } catch (e) {
@@ -299,19 +294,16 @@
     }
   }
 
-  // ============================================================
-  // FLIP CARD BUILDER - fixed height, no overlap
-  // Fee amount removed per request.
-  // ============================================================
+  // Fee amount removed from flip card per request. Only Register button remains.
   function buildEventFlipCard(ev) {
-    var card = document.createElement("div");
+    const card = document.createElement("div");
     card.className = "drawer-flip";
     card.tabIndex = 0;
     card.setAttribute("role", "button");
     card.setAttribute("aria-pressed", "false");
     card.setAttribute("aria-label", ev.title + " - tap for details");
 
-    var html =
+    const html =
       '<div class="drawer-flip-inner">' +
         '<div class="drawer-face drawer-front">' +
           '<span class="item-title">' + ev.title + '</span>' +
@@ -328,7 +320,7 @@
     card.innerHTML = html;
 
     function toggle() {
-      var flipped = card.classList.toggle("flipped");
+      const flipped = card.classList.toggle("flipped");
       card.setAttribute("aria-pressed", flipped ? "true" : "false");
     }
 
@@ -351,48 +343,37 @@
     listEl.innerHTML = "";
     if (category) {
       if (titleEl) titleEl.textContent = category + " events";
-      var filtered = events.filter(function (ev) { return ev.category === category; });
-      if (filtered.length === 0 && events.length > 0) {
-        for (var i = 0; i < events.length; i++) {
-          listEl.appendChild(buildEventFlipCard(events[i]));
-        }
-      } else {
-        for (var j = 0; j < filtered.length; j++) {
-          listEl.appendChild(buildEventFlipCard(filtered[j]));
-        }
-      }
+      const filtered = events.filter(function (ev) { return ev.category === category; });
+      const list = (filtered.length === 0 && events.length > 0) ? events : filtered;
+      list.forEach(function (ev) {
+        listEl.appendChild(buildEventFlipCard(ev));
+      });
     } else {
       if (titleEl) titleEl.textContent = "All events";
-      var cats = [];
-      for (var k = 0; k < events.length; k++) {
-        if (cats.indexOf(events[k].category) === -1) {
-          cats.push(events[k].category);
-        }
-      }
-      for (var m = 0; m < cats.length; m++) {
-        var cat = cats[m];
-        var heading = document.createElement("div");
+      const cats = [];
+      events.forEach(function (ev) {
+        if (cats.indexOf(ev.category) === -1) cats.push(ev.category);
+      });
+      cats.forEach(function (cat) {
+        const heading = document.createElement("div");
         heading.className = "drawer-group-heading";
         heading.textContent = cat;
         listEl.appendChild(heading);
-        var catEvents = events.filter(function (ev) { return ev.category === cat; });
-        for (var n = 0; n < catEvents.length; n++) {
-          listEl.appendChild(buildEventFlipCard(catEvents[n]));
-        }
-      }
+        events.filter(function (ev) { return ev.category === cat; }).forEach(function (ev) {
+          listEl.appendChild(buildEventFlipCard(ev));
+        });
+      });
     }
   }
 
   function initScrollReveal(selector) {
-    var els = document.querySelectorAll(selector || ".reveal");
+    const els = document.querySelectorAll(selector || ".reveal");
     if (!els.length) return;
     if (!("IntersectionObserver" in window)) {
-      for (var i = 0; i < els.length; i++) {
-        els[i].classList.add("in-view");
-      }
+      els.forEach(function (el) { el.classList.add("in-view"); });
       return;
     }
-    var obs = new IntersectionObserver(function (entries, o) {
+    const obs = new IntersectionObserver(function (entries, o) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add("in-view");
@@ -400,14 +381,12 @@
         }
       });
     }, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
-    for (var j = 0; j < els.length; j++) {
-      obs.observe(els[j]);
-    }
+    els.forEach(function (el) { obs.observe(el); });
   }
 
   function initBackToTop() {
     if (document.querySelector(".back-to-top")) return;
-    var btn = document.createElement("button");
+    const btn = document.createElement("button");
     btn.className = "back-to-top";
     btn.setAttribute("aria-label", "Back to top");
     btn.innerHTML = "&#8593;";
@@ -421,15 +400,15 @@
   }
 
   function initScrollSpy(navLinkSelector, sectionSelector) {
-    var links = Array.prototype.slice.call(document.querySelectorAll(navLinkSelector));
-    var sections = Array.prototype.slice.call(document.querySelectorAll(sectionSelector));
+    const links = Array.prototype.slice.call(document.querySelectorAll(navLinkSelector));
+    const sections = Array.prototype.slice.call(document.querySelectorAll(sectionSelector));
     if (!links.length || !sections.length || !("IntersectionObserver" in window)) return;
 
     function linkFor(id) {
       return links.filter(function (a) { return a.getAttribute("href") === "#" + id; });
     }
 
-    var obs = new IntersectionObserver(function (entries) {
+    const obs = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           links.forEach(function (a) { a.classList.remove("active"); });
@@ -438,9 +417,7 @@
       });
     }, { rootMargin: "-40% 0px -50% 0px", threshold: 0 });
 
-    for (var i = 0; i < sections.length; i++) {
-      obs.observe(sections[i]);
-    }
+    sections.forEach(function (s) { obs.observe(s); });
   }
 
   window.UIEffects = {
