@@ -281,7 +281,7 @@
   // ============================================================
   // FLIP CARD BUILDER - fixed height, no overlap
   // ============================================================
-  function buildEventFlipCard(ev) {
+    function buildEventFlipCard(ev) {
     const card = document.createElement("div");
     card.className = "drawer-flip";
     card.tabIndex = 0;
@@ -298,11 +298,27 @@
           <p>${ev.blurb}</p>
           <div>
             <div class="item-fee">Fee: ${ev.fee}</div>
-            <a class="btn-small" href="event.html?slug=${ev.slug}">Full details & pay</a>
+            <a class="btn-small" href="event.html?slug=${ev.slug}">Register</a>
           </div>
         </div>
       </div>
     `;
+    function toggle() {
+      const flipped = card.classList.toggle("flipped");
+      card.setAttribute("aria-pressed", flipped ? "true" : "false");
+    }
+    card.addEventListener("click", (e) => {
+      if (e.target.closest("a")) return;
+      toggle();
+    });
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggle();
+      }
+    });
+    return card;
+  }
     function toggle() {
       const flipped = card.classList.toggle("flipped");
       card.setAttribute("aria-pressed", flipped ? "true" : "false");
