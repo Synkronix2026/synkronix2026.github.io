@@ -296,6 +296,7 @@ nav a.active::after {
   font-family: var(--display); font-size: clamp(1.6rem, 9vw, 5.5rem);
   line-height: 1.05; margin: 0 0 0.6rem 0; letter-spacing: -0.01em;
   text-align: left; align-self: flex-start; white-space: nowrap; max-width: 100%;
+  overflow-wrap: break-word;
 }
 #heroTitle {
   background: linear-gradient(135deg, #FFFFFF 20%, var(--signal) 65%, var(--pulse) 100%);
@@ -633,40 +634,123 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--pulse); outline
 .reveal.in-view { opacity: 1; transform: translateY(0); }
 
 /* ============================================================
-   RESPONSIVE
+   RESPONSIVE — tuned for phones from ~360px to ~430px+
+   (small Android, iPhone SE/mini, standard iPhone, Pro Max/Ultra)
    ============================================================ */
+
+/* Ensure every tappable control meets a comfortable touch target
+   across all breakpoints, not just the smallest one. */
+a, button { -webkit-tap-highlight-color: transparent; }
+
 @media (max-width: 640px) {
-  .hero { min-height: auto; padding: 7rem 6% 3rem; }
-  .hero-text-block { gap: 0.35rem; margin-bottom: 1.4rem; }
-  .hero-college-row { gap: 0.7rem; }
-  .hero-logo { width: 46px; height: 46px; }
-  .hero-college { font-size: 1rem; }
-  .hero-dept { font-size: 0.86rem; }
-  .hero-presents { font-size: clamp(0.95rem, 5vw, 1.2rem); margin: 0.4rem 0 0.7rem 0; }
-  .hero-meta { gap: 1.4rem; }
-  .cta-row { flex-direction: column; align-items: stretch; }
-  .cta-row .btn { width: 100%; text-align: center; }
-  section { padding: 3.5rem 6% 4rem; }
-  .location-section { padding: 3.5rem 6% 4rem; }
-  h2 { font-size: clamp(1.9rem, 8vw, 2.6rem); }
-  .track-choice { flex-direction: column; }
-  .cat-btn { padding: 2rem 1.5rem; min-width: auto; }
-  .contact-grid { grid-template-columns: 1fr; }
-  .counter-grid { gap: 0.6rem; }
-  .counter-card { padding: 1.2rem 0.6rem; }
-  .counter-value { font-size: clamp(1.5rem, 7vw, 2rem); }
-  .counter-label { font-size: 0.64rem; letter-spacing: 0.06em; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { overflow-x: hidden; }
+
+  /* --- Hero --- */
+  .hero { min-height: auto; padding: 6.5rem 5.5% 2.75rem; }
+  .hero-text-block { gap: 0.35rem; margin-bottom: 1.25rem; }
+  .hero-college-row { gap: 0.6rem; }
+  .hero-logo { width: 42px; height: 42px; }
+  .hero-college { font-size: 0.95rem; }
+  .hero-dept { font-size: 0.82rem; line-height: 1.35; }
+  .hero-presents { font-size: clamp(0.9rem, 5vw, 1.15rem); margin: 0.35rem 0 0.6rem 0; }
+  .hero h1 { font-size: clamp(2.1rem, 11vw, 3.4rem); white-space: normal; word-break: break-word; }
+  .tagline { font-size: clamp(1rem, 4.5vw, 1.15rem); margin-bottom: 1.6rem; }
+  .reg-badge { font-size: 0.7rem; padding: 0.45rem 0.8rem; margin-bottom: 1.25rem; white-space: normal; line-height: 1.4; }
+  .hero-meta { gap: 1.1rem 1.6rem; margin-bottom: 1.8rem; }
+  .hero-meta strong { font-size: 1rem; }
+  .hero-meta > div { font-size: 0.76rem; }
+
+  /* --- Buttons: full-width, thumb-friendly, min 48px tall --- */
+  .cta-row { flex-direction: column; align-items: stretch; gap: 0.75rem; margin-bottom: 1.6rem; }
+  .cta-row .btn { width: 100%; text-align: center; min-height: 48px; padding: 0.85rem 1.5rem; font-size: 0.92rem; }
+  .btn { min-height: 48px; }
+
+  /* --- Countdown: keep on one row, shrink to fit narrow screens --- */
+  .countdown { gap: 0.35rem; justify-content: flex-start; }
+  .countdown .cd-unit { min-width: 0; flex: 1 1 0; padding: 0.6rem 0.4rem; max-width: 78px; }
+  .countdown .cd-value { font-size: clamp(1.25rem, 6.5vw, 1.7rem); }
+  .countdown .cd-unit-label { font-size: 0.58rem; }
   .countdown .cd-sep { display: none; }
-  .logo { margin-left: 60px; font-size: 0.85rem; max-width: calc(100vw - 120px); }
-  .osm-frame, .map-static-panel { height: 260px; }
-  .directions-btn { width: 100%; justify-content: center; }
-  .section-label { font-size: clamp(0.85rem, 4vw, 1.05rem); letter-spacing: 0.12em; }
+  .countdown .cd-ms { display: none; }
+
+  /* --- Nav --- */
+  nav { padding: 0.85rem 1rem 0.85rem 4.2rem; }
+  .logo { margin-left: 0; font-size: 0.82rem; max-width: calc(100vw - 160px); }
+  #navLinks { gap: 0.6rem; }
+  .nav-cta { padding: 0.5rem 0.9rem; font-size: 0.8rem; }
+  .nav-brochure { padding: 0.5rem 0.6rem; }
+  .global-menu-toggle { top: 0.7rem; left: 0.75rem; width: 42px; height: 42px; }
+
+  /* --- Sections & type scale --- */
+  section { padding: 3rem 5.5% 3.5rem; }
+  .location-section { padding: 3rem 5.5% 3.5rem; }
+  h2 { font-size: clamp(1.7rem, 8vw, 2.3rem); }
+  .section-sub { font-size: 0.92rem; }
+  .section-label { font-size: clamp(0.8rem, 4vw, 1rem); letter-spacing: 0.1em; }
+
+  /* --- Events track --- */
+  .track-choice { flex-direction: column; gap: 1rem; }
+  .cat-btn { padding: 1.75rem 1.25rem; min-width: auto; min-height: 48px; }
+  .cat-btn .cat-icon { font-size: 2.1rem; }
+  .cat-btn .cat-label { font-size: 1.15rem; }
+
+  /* --- Stats & contact grid --- */
+  .counter-grid { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+  .counter-card { padding: 1rem 0.4rem; }
+  .counter-value { font-size: clamp(1.3rem, 6.5vw, 1.7rem); }
+  .counter-label { font-size: 0.6rem; letter-spacing: 0.04em; }
+  .contact-grid { grid-template-columns: 1fr; gap: 0.9rem; }
+  .contact-card { padding: 1.25rem; min-height: 48px; }
+
+  /* --- Map & location --- */
+  .osm-frame, .map-static-panel { height: 240px; }
+  .map-tab-btn { padding: 0.6rem 0.5rem; font-size: 0.66rem; min-height: 44px; }
+  .map-open-btn { min-height: 40px; padding: 0.5rem 0.85rem; }
+  .loc-card { padding: 1rem; }
+  .directions-btn { width: 100%; justify-content: center; min-height: 48px; }
+
+  /* --- Footer --- */
+  footer { padding: 2.5rem 6%; }
+  .footer-contact-grid { gap: 0.6rem 1rem; font-size: 0.76rem; }
+
+  /* --- Drawer touch targets --- */
+  .drawer-nav-links a { min-height: 48px; }
+  .events-drawer { width: 86vw; }
 }
-@media (max-width: 380px) { .hero h1 { font-size: 8vw; } }
+
+/* Extra-small phones: iPhone SE (1st/2nd gen 320–375px), small Android (360px) */
+@media (max-width: 400px) {
+  .hero { padding: 6rem 5% 2.25rem; }
+  .hero-college { font-size: 0.86rem; }
+  .hero-dept { font-size: 0.76rem; }
+  .hero h1 { font-size: clamp(1.9rem, 12vw, 2.6rem); }
+  .tagline { font-size: 0.95rem; }
+  .hero-meta { gap: 0.9rem 1.2rem; }
+  .countdown .cd-unit { padding: 0.5rem 0.3rem; max-width: 68px; }
+  .countdown .cd-value { font-size: clamp(1.1rem, 6vw, 1.4rem); }
+  .countdown .cd-unit-label { font-size: 0.54rem; letter-spacing: 0.04em; }
+  .logo { font-size: 0.74rem; max-width: calc(100vw - 150px); }
+  .nav-cta { padding: 0.45rem 0.7rem; font-size: 0.74rem; }
+  h2 { font-size: clamp(1.5rem, 8vw, 2rem); }
+  .counter-grid { gap: 0.4rem; }
+  .counter-value { font-size: clamp(1.1rem, 7vw, 1.4rem); }
+  .counter-label { font-size: 0.55rem; }
+  .cat-btn { padding: 1.5rem 1rem; }
+}
+
+/* Landscape phones (short viewport height) — avoid an overly tall hero */
+@media (max-width: 900px) and (max-height: 480px) and (orientation: landscape) {
+  .hero { min-height: auto; padding: 5.5rem 5% 2rem; }
+  .hero-text-block { margin-bottom: 0.8rem; }
+  .countdown-wrap { margin-top: 0.25rem; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .map-static-icon { animation: none; }
   .section-label::before { animation: none; }
+  .reg-badge .reg-dot { animation: none; }
 }
 </style>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpolygon points='4,4 4,28 20,20' fill='%235B8DEF' stroke='%23BFE3FF' stroke-width='1.5'/%3E%3C/svg%3E" type="image/svg+xml">
