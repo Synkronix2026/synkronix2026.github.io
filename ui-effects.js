@@ -210,17 +210,37 @@
     '}',
     '@keyframes ui-cursor-blink { 50%{ opacity:0; } }',
     'html.ui-no-scroll, html.ui-no-scroll body { overflow:hidden; height:100%; }',
+    /* ----------------------------------------------------------
+       BACK TO TOP — fixed bottom-right circular button.
+       z-index sits above section content (1) and the hamburger's
+       own hit area, but stays below the drawer/overlay (55/60) so
+       it never traps a tap while the drawer is open. Safe-area
+       inset keeps it clear of iOS home-indicator / Android gesture
+       bar and the mobile browser's own bottom toolbar.
+       ---------------------------------------------------------- */
     '.back-to-top {',
-    '  position:fixed; right:1.1rem; bottom:1.1rem; z-index:50;',
+    '  position:fixed;',
+    '  right:1.1rem;',
+    '  bottom:calc(1.1rem + env(safe-area-inset-bottom, 0px));',
+    '  z-index:45;',
     '  width:44px; height:44px; border-radius:50%;',
     '  background:#12151C; border:1px solid #232830; color:#5B8DEF;',
     '  display:flex; align-items:center; justify-content:center; font-size:1.1rem;',
     '  cursor:pointer; opacity:0; visibility:hidden; transform:translateY(10px);',
     '  transition:opacity 0.25s ease, transform 0.25s ease, border-color 0.2s, visibility 0.25s;',
     '  box-shadow:0 10px 22px -12px rgba(0,0,0,0.8);',
+    '  -webkit-tap-highlight-color:transparent;',
     '}',
     '.back-to-top.show { opacity:1; visibility:visible; transform:translateY(0); }',
-    '.back-to-top:hover { border-color:#5B8DEF; box-shadow:0 12px 26px -10px rgba(91,141,239,0.5); }'
+    '.back-to-top:hover { border-color:#5B8DEF; box-shadow:0 12px 26px -10px rgba(91,141,239,0.5); }',
+    '@media (max-width:640px) {',
+    '  .back-to-top {',
+    '    right:1rem;',
+    '    bottom:calc(1rem + env(safe-area-inset-bottom, 0px));',
+    '    width:46px; height:46px; font-size:1.15rem;',
+    '  }',
+    '}',
+    '@media (prefers-reduced-motion: reduce) { .back-to-top { transition:none; } }'
   ];
 
   const cursorStyle = document.createElement("style");
@@ -391,12 +411,35 @@
     btn.setAttribute("aria-label", "Back to top");
     btn.innerHTML = "&#8593;";
     document.body.appendChild(btn);
+
     btn.addEventListener("click", function () {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
-    window.addEventListener("scroll", function () {
-      btn.classList.toggle("show", window.scrollY > window.innerHeight * 0.6);
+
+    // Show sooner on small/short screens so the button is reachable
+    // without a very long scroll; fall back to a fixed pixel amount
+    // if innerHeight is unavailable for some reason.
+    function getShowThreshold() {
+      const vh = window.innerHeight || 800;
+      const isMobile = window.innerWidth <= 640;
+      return isMobile ? Math.min(vh * 0.4, 320) : vh * 0.6;
+    }
+
+    let showThreshold = getShowThreshold();
+
+    function onScroll() {
+      const y = window.scrollY || document.documentElement.scrollTop || 0;
+      btn.classList.toggle("show", y > showThreshold);
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", function () {
+      showThreshold = getShowThreshold();
+      onScroll();
     }, { passive: true });
+
+    // Run once in case the page loads already scrolled (e.g. anchor link).
+    onScroll();
   }
 
   function initScrollSpy(navLinkSelector, sectionSelector) {
