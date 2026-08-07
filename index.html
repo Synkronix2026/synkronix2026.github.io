@@ -634,38 +634,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--pulse); outline
 .reveal.in-view { opacity: 1; transform: translateY(0); }
 
 /* ============================================================
-   GO TO TOP BUTTON
-   ============================================================ */
-.go-top-btn {
-  position: fixed;
-  right: 1.1rem;
-  bottom: 1.1rem;
-  z-index: 40;
-  width: 46px; height: 46px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(135deg, var(--signal), #7BA5FF);
-  color: var(--ink);
-  border: none; cursor: pointer;
-  box-shadow: 0 10px 26px -8px rgba(91,141,239,0.6);
-  opacity: 0; visibility: hidden;
-  transform: translateY(12px) scale(0.9);
-  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s, box-shadow 0.18s ease;
-}
-.go-top-btn.show { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
-.go-top-btn:hover { box-shadow: 0 14px 34px -8px rgba(91,141,239,0.75); transform: translateY(-2px) scale(1.03); }
-.go-top-btn svg { width: 20px; height: 20px; }
-
-@media (max-width: 640px) {
-  .go-top-btn {
-    /* keep clear of the fixed hamburger + safe-area on mobile */
-    right: 1rem;
-    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
-    width: 44px; height: 44px;
-  }
-}
-
-/* ============================================================
    RESPONSIVE — tuned for phones from ~360px to ~430px+
    (small Android, iPhone SE/mini, standard iPhone, Pro Max/Ultra)
    ============================================================ */
@@ -1072,12 +1040,6 @@ a, button { -webkit-tap-highlight-color: transparent; }
   <p style="margin-top:1rem; opacity:0.6;">Made With 💖 By Synkronix26' Tech Support Team</p>
 </footer>
 
-<button class="go-top-btn" id="goTopBtn" aria-label="Scroll to top" title="Back to top">
-  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-</button>
-
 <script>
 function switchMapTab(which) {
   ['OSM','Static'].forEach(function(id) {
@@ -1203,24 +1165,6 @@ function switchMapTab(which) {
   if (typeof UIEffects !== "undefined") {
     if (UIEffects.initScrollReveal) UIEffects.initScrollReveal(".reveal");
     if (UIEffects.initScrollSpy) UIEffects.initScrollSpy("#navLinksList a, .drawer-nav-links a[href^='#']", "section[id]");
-  }
-
-  /* ---- Go-to-top button ---- */
-  var goTopBtn = document.getElementById("goTopBtn");
-  if (goTopBtn) {
-    var showAfter = 400;
-    var toggleGoTop = function () {
-      if (window.scrollY > showAfter || document.documentElement.scrollTop > showAfter) {
-        goTopBtn.classList.add("show");
-      } else {
-        goTopBtn.classList.remove("show");
-      }
-    };
-    window.addEventListener("scroll", toggleGoTop, { passive: true });
-    toggleGoTop();
-    goTopBtn.addEventListener("click", function () {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
   }
 
   var canvas = document.getElementById("netCanvas");
