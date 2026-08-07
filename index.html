@@ -305,6 +305,21 @@ nav a.active::after {
   font-size: clamp(1.1rem, 2.5vw, 1.45rem); color: var(--text-dim);
   margin: 0 0 2.2rem 0; max-width: 34ch; font-weight: 500; line-height: 1.4;
 }
+.reg-badge {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  font-family: var(--mono); font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.03em; color: var(--pulse);
+  background: rgba(255,200,87,0.08);
+  border: 1px solid rgba(255,200,87,0.35);
+  border-radius: 999px; padding: 0.5rem 1rem;
+  margin-bottom: 1.6rem; align-self: flex-start;
+}
+.reg-badge .reg-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--pulse);
+  box-shadow: 0 0 8px var(--pulse), 0 0 16px rgba(255,200,87,0.5);
+  flex-shrink: 0; animation: label-dot-blink 2s ease-in-out infinite;
+}
+@media (max-width: 640px) { .reg-badge { font-size: 0.72rem; padding: 0.45rem 0.85rem; } }
 .hero-meta {
   display: flex; flex-wrap: wrap; gap: 2.8rem;
   font-family: var(--mono); font-size: 0.85rem;
@@ -716,9 +731,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--pulse); outline
   </div>
   <h1 id="heroTitle" class="neon-title"></h1>
   <p class="tagline" id="heroTagline"></p>
+  <div class="reg-badge"><span class="reg-dot"></span>Registrations open from 10-08-2026</div>
   <div class="hero-meta">
     <div><strong id="metaDate"></strong>Date</div>
     <div><strong id="metaVenue"></strong>Venue</div>
+    <div><strong id="metaRegOpen">10 Aug 2026</strong>Registrations open</div>
     <div><strong>6</strong>Events</div>
   </div>
   <div class="cta-row">
@@ -758,6 +775,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--pulse); outline
     Join aspiring minds from across colleges to showcase your talent, solve exciting challenges,
     exchange ideas, and create unforgettable memories through a thrilling blend of technical
     and non-technical events. Where Ideas Synchronize and Innovation Begins.
+  </p>
+  <p class="section-sub" style="margin-top: -1.5rem; color: var(--pulse); font-weight: 600;">
+    📢 Registrations open on 10-08-2026 — check back here or follow our socials for the link.
   </p>
 </section>
 
