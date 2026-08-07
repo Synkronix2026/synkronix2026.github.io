@@ -71,7 +71,7 @@ const CONFIG = {
       presentationFormat: "10 minutes per team (max): 7 minutes presentation + 3 minutes Q&A",
       prerequisites: [
         "Submissions must be made through Google Form.",
-        "Full paper submission (Maximum 10 pages).",
+        "Full paper submission (Maximum 6 pages).",
         "Paper format: Times New Roman, Font Size 12, A4 size, Language — English.",
         "Submission format: PDF.",
         "Only accepted papers will be invited for the final presentation.",
