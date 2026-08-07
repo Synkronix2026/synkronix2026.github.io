@@ -172,10 +172,18 @@ nav a.active::after {
   transition: background 0.15s, color 0.15s;
 }
 .drawer-close:hover { background: rgba(255,255,255,0.06); color: var(--text); }
+.drawer-body {
+  display: flex; flex-direction: column;
+  flex: 1 1 auto; min-height: 0;
+  justify-content: center; /* balances the block vertically instead of leaving dead space below */
+  overflow-y: auto;
+}
+.drawer-body.list-mode { justify-content: flex-start; } /* top-align once the (potentially long) event list is showing, so scrolling works normally */
 .drawer-nav-links {
   display: flex; flex-direction: column; gap: 0.15rem;
   padding-bottom: 0.7rem; margin-bottom: 0.7rem;
   border-bottom: 1px solid var(--panel-line); flex-shrink: 0;
+  align-items: stretch; /* each link stretches full width so text-align below is meaningful */
 }
 .drawer-nav-links.hidden { display: none; }
 .drawer-nav-links a {
@@ -183,7 +191,8 @@ nav a.active::after {
   font-size: 1.1rem; font-weight: 700;
   padding: 0.75rem 0.85rem; border-radius: 6px;
   transition: background 0.15s, color 0.15s, padding-left 0.15s;
-  display: flex; align-items: center; gap: 0.5rem;
+  display: flex; align-items: center; justify-content: flex-start; gap: 0.5rem;
+  text-align: left; width: 100%;
 }
 .drawer-nav-links a:hover {
   background: rgba(91,141,239,0.1); color: var(--text); padding-left: 0.9rem;
@@ -782,6 +791,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
     <span id="drawerTitle">SYNKRONIX '26</span>
     <button class="drawer-close" id="drawerClose" aria-label="Close menu">✕</button>
   </div>
+  <div class="drawer-body" id="drawerBody">
   <nav class="drawer-nav-links" id="drawerNavLinks" aria-label="Page sections">
     <a href="#about" data-drawer-link>About</a>
     <a href="#events" data-drawer-link>Events</a>
@@ -792,6 +802,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   </nav>
   <button class="drawer-back-btn hidden" id="drawerBackBtn">← Back to menu</button>
   <div class="drawer-list" id="drawerEventList"></div>
+  </div>
 </div>
 <header>
 <nav>
@@ -1131,10 +1142,12 @@ function switchMapTab(which) {
   var navLinks = document.getElementById("drawerNavLinks");
   var backBtn = document.getElementById("drawerBackBtn");
   var eventList = document.getElementById("drawerEventList");
+  var drawerBody = document.getElementById("drawerBody");
   var lastFocused = null;
-  function showNav() { navLinks.classList.remove("hidden"); backBtn.classList.add("hidden"); eventList.innerHTML = ""; }
+  function showNav() { navLinks.classList.remove("hidden"); backBtn.classList.add("hidden"); eventList.innerHTML = ""; if (drawerBody) drawerBody.classList.remove("list-mode"); }
   function showFiltered(cat) {
     navLinks.classList.add("hidden"); backBtn.classList.remove("hidden");
+    if (drawerBody) drawerBody.classList.add("list-mode");
     var filtered = allEvents.filter(function(e){ return e.category === cat; });
     if (typeof UIEffects !== "undefined" && UIEffects.renderEventsList) UIEffects.renderEventsList(eventList, null, filtered, cat);
   }
