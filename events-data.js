@@ -40,9 +40,8 @@ const CONFIG = {
       ],
       judgingCriteria: "Judging will be based on the total points earned by completing the auctioned coding problems. Each problem carries different points based on its difficulty level.",
       prizes: [
-        "Winner: ₹TBA (Cash Prize)",
-        "Runner-up: ₹TBA (Cash Prize)",
-        "Every participant will receive a Participation Certificate."
+        "Top 3 teams will receive Prizes & Certificates.",
+        "Participation Certificate will be provided to all participants."
       ],
       fee: "₹250",
       feeAmount: 250,
@@ -101,10 +100,8 @@ const CONFIG = {
         "Time Management"
       ],
       prizes: [
-        "First Prize: ₹TBA + Winner Certificate",
-        "Second Prize: ₹TBA + Winner Certificate",
-        "Third Prize: ₹TBA + Winner Certificate",
-        "Presentation Certificate for all presenters"
+        "Top 3 teams will receive Prizes & Certificates.",
+        "Participation Certificate will be provided to all participants."
       ],
       fee: "₹250",
       feeAmount: 250,
@@ -170,9 +167,8 @@ const CONFIG = {
         "Quality of prompts submitted"
       ],
       prizes: [
-        "Winner: ₹TBA (Cash Prize)",
-        "Runner-up: ₹TBA (Cash Prize)",
-        "Every participant will receive a Participation Certificate."
+        "Top 3 teams will receive Prizes & Certificates.",
+        "Participation Certificate will be provided to all participants."
       ],
       tagline: "Think Smart. Prompt Better. Build the Future!",
       fee: "₹250",
@@ -215,8 +211,8 @@ const CONFIG = {
       ],
       judgingNote: "If two teams finish at the same time, the team with the most accurate investigation and fewer hints used will be ranked higher.",
       prizes: [
-        "Medals and certificates will be awarded to First 3 Places.",
-        "All participants will get a Participation Certificate."
+        "Top 3 teams will receive Prizes & Certificates.",
+        "Participation Certificate will be provided to all participants."
       ],
       fee: "₹250",
       feeAmount: 250,
@@ -255,8 +251,8 @@ const CONFIG = {
       eligibility: "Open to symposium participants.",
       judgingCriteria: ["Time", "Accuracy", "Teamwork", "Least Hints"],
       prizes: [
-        "Winner Certificate & Prize.",
-        "Participation gift for teams unlocking the vault."
+        "Top 3 teams will receive Prizes & Certificates.",
+        "All other teams that successfully unlock the vault will receive Participation Gifts & Certificate."
       ],
       fee: "₹250",
       feeAmount: 250,
@@ -305,9 +301,8 @@ const CONFIG = {
         "Time Management & Overall Impact – 10 Marks"
       ],
       prizes: [
-        "Winner Team: ₹TBA Cash Prize + Certificates",
-        "Best Speaker Award: ₹TBA Cash Prize + Certificate",
-        "Participants: Certificates"
+        "Top 3 teams will receive Prizes & Certificates.",
+        "Participation Certificate will be provided to all participants."
       ],
       tagline: "Think. Speak. Convince. Win.",
       fee: "₹250",
