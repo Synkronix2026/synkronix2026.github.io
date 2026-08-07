@@ -647,26 +647,28 @@ a, button { -webkit-tap-highlight-color: transparent; }
   body { overflow-x: hidden; }
 
   /* --- Hero --- */
-  .hero { min-height: auto; padding: 6.5rem 5.5% 2.75rem; }
-  .hero-text-block { gap: 0.35rem; margin-bottom: 1.25rem; }
-  .hero-college-row { gap: 0.6rem; }
-  .hero-logo { width: 42px; height: 42px; }
-  .hero-college { font-size: 0.95rem; }
-  .hero-dept { font-size: 0.82rem; line-height: 1.35; }
-  .hero-presents { font-size: clamp(0.9rem, 5vw, 1.15rem); margin: 0.35rem 0 0.6rem 0; }
-  .hero h1 { font-size: clamp(2.1rem, 11vw, 3.4rem); white-space: normal; word-break: break-word; }
-  .tagline { font-size: clamp(1rem, 4.5vw, 1.15rem); margin-bottom: 1.6rem; }
-  .reg-badge { font-size: 0.7rem; padding: 0.45rem 0.8rem; margin-bottom: 1.25rem; white-space: normal; line-height: 1.4; }
-  .hero-meta { gap: 1.1rem 1.6rem; margin-bottom: 1.8rem; }
-  .hero-meta strong { font-size: 1rem; }
-  .hero-meta > div { font-size: 0.76rem; }
+  .hero { min-height: auto; padding: 5.75rem 5.5% 2.5rem; }
+  .hero-text-block { gap: 0.3rem; margin-bottom: 0.9rem; }
+  .hero-college-row { gap: 0.55rem; }
+  .hero-logo { width: 40px; height: 40px; }
+  .hero-college { font-size: 0.92rem; line-height: 1.25; }
+  .hero-dept { font-size: 0.78rem; line-height: 1.3; }
+  .hero-presents { font-size: clamp(0.85rem, 4.5vw, 1.05rem); margin: 0.3rem 0 0.45rem 0; }
+  .hero h1 { font-size: clamp(2.1rem, 11vw, 3.4rem); margin-bottom: 0.4rem; white-space: normal; word-break: break-word; }
+  .hero .tagline { font-size: clamp(0.98rem, 4.2vw, 1.15rem); margin-bottom: 1rem; }
+  .reg-badge { font-size: 0.7rem; padding: 0.42rem 0.75rem; margin-bottom: 1.1rem; white-space: normal; line-height: 1.4; }
+  .hero-meta { gap: 0.9rem 1.4rem; margin-bottom: 1.5rem; }
+  .hero-meta strong { font-size: 0.98rem; margin-bottom: 0.1rem; }
+  .hero-meta > div { font-size: 0.72rem; }
 
   /* --- Buttons: full-width, thumb-friendly, min 48px tall --- */
-  .cta-row { flex-direction: column; align-items: stretch; gap: 0.75rem; margin-bottom: 1.6rem; }
+  .cta-row { flex-direction: column; align-items: stretch; gap: 0.65rem; margin-bottom: 1.4rem; }
   .cta-row .btn { width: 100%; text-align: center; min-height: 48px; padding: 0.85rem 1.5rem; font-size: 0.92rem; }
   .btn { min-height: 48px; }
 
   /* --- Countdown: keep on one row, shrink to fit narrow screens --- */
+  .countdown-wrap { margin-top: 0.2rem; }
+  .countdown-label { margin-bottom: 0.5rem; }
   .countdown { gap: 0.35rem; justify-content: flex-start; }
   .countdown .cd-unit { min-width: 0; flex: 1 1 0; padding: 0.6rem 0.4rem; max-width: 78px; }
   .countdown .cd-value { font-size: clamp(1.25rem, 6.5vw, 1.7rem); }
@@ -721,12 +723,16 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
 /* Extra-small phones: iPhone SE (1st/2nd gen 320–375px), small Android (360px) */
 @media (max-width: 400px) {
-  .hero { padding: 6rem 5% 2.25rem; }
-  .hero-college { font-size: 0.86rem; }
-  .hero-dept { font-size: 0.76rem; }
-  .hero h1 { font-size: clamp(1.9rem, 12vw, 2.6rem); }
-  .tagline { font-size: 0.95rem; }
-  .hero-meta { gap: 0.9rem 1.2rem; }
+  .hero { padding: 5.5rem 5% 2rem; }
+  .hero-text-block { margin-bottom: 0.7rem; }
+  .hero-college { font-size: 0.84rem; }
+  .hero-dept { font-size: 0.72rem; }
+  .hero-presents { margin: 0.25rem 0 0.35rem 0; }
+  .hero h1 { font-size: clamp(1.9rem, 12vw, 2.6rem); margin-bottom: 0.3rem; }
+  .hero .tagline { font-size: 0.92rem; margin-bottom: 0.85rem; }
+  .reg-badge { margin-bottom: 0.9rem; }
+  .hero-meta { gap: 0.7rem 1.1rem; margin-bottom: 1.25rem; }
+  .cta-row { margin-bottom: 1.1rem; }
   .countdown .cd-unit { padding: 0.5rem 0.3rem; max-width: 68px; }
   .countdown .cd-value { font-size: clamp(1.1rem, 6vw, 1.4rem); }
   .countdown .cd-unit-label { font-size: 0.54rem; letter-spacing: 0.04em; }
@@ -741,9 +747,12 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
 /* Landscape phones (short viewport height) — avoid an overly tall hero */
 @media (max-width: 900px) and (max-height: 480px) and (orientation: landscape) {
-  .hero { min-height: auto; padding: 5.5rem 5% 2rem; }
-  .hero-text-block { margin-bottom: 0.8rem; }
-  .countdown-wrap { margin-top: 0.25rem; }
+  .hero { min-height: auto; padding: 5rem 5% 1.5rem; }
+  .hero-text-block { margin-bottom: 0.6rem; }
+  .hero .tagline { margin-bottom: 0.7rem; }
+  .hero-meta { margin-bottom: 1rem; }
+  .cta-row { margin-bottom: 1rem; }
+  .countdown-wrap { margin-top: 0.2rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -777,6 +786,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
     <a href="#events" data-drawer-link>Events</a>
     <a href="#contact" data-drawer-link>Contact</a>
     <a href="#location" data-drawer-link>📍 Location</a>
+    <a href="rules.html" data-drawer-link>📋 Rules & Regulations</a>
     <a href="https://raw.githubusercontent.com/Synkronix2026/synkronix2026.github.io/main/Brochure.pdf" target="_blank" rel="noopener" data-drawer-link>📄 Brochure</a>
   </nav>
   <button class="drawer-back-btn hidden" id="drawerBackBtn">← Back to menu</button>
@@ -791,6 +801,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
       <li><a href="#events">Events</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="#location">Location</a></li>
+      <li><a href="rules.html">Rules</a></li>
     </ul>
     <a class="nav-brochure" href="https://raw.githubusercontent.com/Synkronix2026/synkronix2026.github.io/main/Brochure.pdf" target="_blank" rel="noopener" aria-label="Download brochure">📄 <span class="nb-label">Brochure</span></a>
     <a class="btn nav-cta" href="#events">See events</a>
@@ -1023,6 +1034,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
     <span><a id="footerInsta" href="#" target="_blank" rel="noopener">Instagram</a></span>
     <span><a id="footerLinkedin" href="#" target="_blank" rel="noopener">LinkedIn</a></span>
     <span><a href="https://raw.githubusercontent.com/Synkronix2026/synkronix2026.github.io/main/Brochure.pdf" target="_blank" rel="noopener">📄 Brochure</a></span>
+    <span><a href="rules.html">📋 Rules & Regulations</a></span>
   </div>
   <p style="margin-top:1rem; opacity:0.6;">Made With 💖 By Synkronix26' Tech Support Team</p>
 </footer>
