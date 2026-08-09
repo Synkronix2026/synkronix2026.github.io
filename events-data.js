@@ -46,8 +46,8 @@ const CONFIG = {
       fee: "₹250",
       feeAmount: 250,
       image: "https://placehold.co/900x500/12151C/5B8DEF?text=Code+Auction",
-      razorpayLink: "https://forms.gle/QTYrbegcb9HYNDLP6",
-      registrationFormLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
+      razorpayLink: "https://forms.gle/2qeX9TS2i7XTPiU8A",
+      registrationFormLink: "https://forms.gle/2qeX9TS2i7XTPiU8A"
     },
 
     // ---- PaperExpo ----
@@ -106,8 +106,8 @@ const CONFIG = {
       fee: "₹250",
       feeAmount: 250,
       image: "https://placehold.co/900x500/12151C/5B8DEF?text=PaperExpo",
-      razorpayLink: "https://forms.gle/QTYrbegcb9HYNDLP6",
-      registrationFormLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
+      razorpayLink: "https://forms.gle/cx4Ln4hTab8BQnX96",
+      registrationFormLink: "https://forms.gle/cx4Ln4hTab8BQnX96"
     },
 
     // ---- Prompt Clash ----
@@ -217,8 +217,8 @@ const CONFIG = {
       fee: "₹250",
       feeAmount: 250,
       image: "https://placehold.co/900x500/12151C/FFC857?text=Escape+Room",
-      razorpayLink: "https://forms.gle/QTYrbegcb9HYNDLP6",
-      registrationFormLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
+      razorpayLink: "https://forms.gle/2qeX9TS2i7XTPiU8A",
+      registrationFormLink: "https://forms.gle/2qeX9TS2i7XTPiU8A"
     },
 
     // ---- Mission Impossible ----
@@ -257,8 +257,8 @@ const CONFIG = {
       fee: "₹250",
       feeAmount: 250,
       image: "https://placehold.co/900x500/12151C/FFC857?text=Mission+Impossible",
-      razorpayLink: "https://forms.gle/QTYrbegcb9HYNDLP6",
-      registrationFormLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
+      razorpayLink: "https://forms.gle/2qeX9TS2i7XTPiU8A",
+      registrationFormLink: "https://forms.gle/2qeX9TS2i7XTPiU8A"
     },
 
     // ---- Kadhaikkum Kalam ----
@@ -308,8 +308,8 @@ const CONFIG = {
       fee: "₹250",
       feeAmount: 250,
       image: "https://placehold.co/900x500/12151C/FFC857?text=Kadhaikkum+Kalam",
-      razorpayLink: "https://forms.gle/QTYrbegcb9HYNDLP6",
-      registrationFormLink: "https://forms.gle/QTYrbegcb9HYNDLP6"
+      razorpayLink: "https://forms.gle/2qeX9TS2i7XTPiU8A",
+      registrationFormLink: "https://forms.gle/2qeX9TS2i7XTPiU8A"
     }
   ],
 
