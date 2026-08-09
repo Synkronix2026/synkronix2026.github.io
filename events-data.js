@@ -84,7 +84,7 @@ const CONFIG = {
       },
       rules: [
         "Papers must be original and free from plagiarism.",
-        "Maximum paper length is 10 pages in the prescribed format.",
+        "Maximum paper length is 6 pages in the prescribed format.",
         "A team may consist of 1–3 members.",
         "Presentation time is strictly limited to 7 minutes, followed by 3 minutes of Q&A.",
         "The judges' decision will be final.",
