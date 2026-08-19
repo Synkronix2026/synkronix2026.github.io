@@ -620,6 +620,50 @@ h2 {
 .directions-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 32px -10px rgba(91,141,239,0.7); }
 
 /* ============================================================
+   FAQ (Accordion)
+   ============================================================ */
+.faq-list { display: flex; flex-direction: column; gap: 0.9rem; }
+.faq-group-heading {
+  font-family: var(--mono); font-size: 0.75rem; text-transform: uppercase;
+  letter-spacing: 0.14em; color: var(--pulse);
+  margin: 2rem 0 0.9rem; padding-top: 1.6rem;
+  border-top: 1px solid var(--panel-line);
+}
+.faq-group-heading:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+.faq-item {
+  background: linear-gradient(180deg, var(--panel), #0D1017);
+  border: 1px solid var(--panel-line); border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px -18px rgba(0,0,0,0.8);
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.faq-item:hover { border-color: rgba(91,141,239,0.4); }
+.faq-item[open] { border-color: var(--signal); box-shadow: 0 14px 28px -16px rgba(91,141,239,0.3); }
+.faq-item summary {
+  list-style: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1.1rem 1.3rem;
+  font-family: var(--body); font-weight: 600; font-size: 1rem; color: var(--text);
+  -webkit-tap-highlight-color: transparent;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::marker { content: ""; }
+.faq-q-num { font-family: var(--mono); color: var(--signal); font-size: 0.85rem; margin-right: 0.6rem; flex-shrink: 0; }
+.faq-icon {
+  flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+  border: 1px solid var(--panel-line); color: var(--signal);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 0.9rem; line-height: 1;
+  transition: transform 0.3s ease, background 0.25s ease, border-color 0.25s ease;
+}
+.faq-item[open] .faq-icon { transform: rotate(45deg); background: rgba(91,141,239,0.12); border-color: var(--signal); }
+.faq-answer {
+  padding: 0 1.3rem 1.15rem 1.3rem;
+  color: var(--text-dim); font-size: 0.95rem; line-height: 1.6;
+}
+.faq-answer p { margin: 0; }
+
+/* ============================================================
    FOOTER
    ============================================================ */
 footer {
@@ -721,6 +765,11 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .loc-card { padding: 1rem; }
   .directions-btn { width: 100%; justify-content: center; min-height: 48px; }
 
+  /* --- FAQ --- */
+  .faq-item summary { padding: 1rem; font-size: 0.92rem; }
+  .faq-answer { padding: 0 1rem 1rem 1rem; font-size: 0.88rem; }
+  .faq-group-heading { font-size: 0.68rem; }
+
   /* --- Footer --- */
   footer { padding: 2.5rem 6%; }
   .footer-contact-grid { gap: 0.6rem 1rem; font-size: 0.76rem; }
@@ -797,6 +846,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
     <a href="#events" data-drawer-link>Events</a>
     <a href="#contact" data-drawer-link>Contact</a>
     <a href="#location" data-drawer-link>📍 Location</a>
+    <a href="#faq" data-drawer-link>❓ FAQ</a>
     <a href="rules.html" data-drawer-link>📋 Rules & Regulations</a>
     <a href="https://raw.githubusercontent.com/Synkronix2026/synkronix2026.github.io/main/Brochure.pdf" target="_blank" rel="noopener" data-drawer-link>📄 Brochure</a>
   </nav>
@@ -813,6 +863,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
       <li><a href="#events">Events</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="#location">Location</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="rules.html">Rules</a></li>
     </ul>
     <a class="nav-brochure" href="https://raw.githubusercontent.com/Synkronix2026/synkronix2026.github.io/main/Brochure.pdf" target="_blank" rel="noopener" aria-label="Download brochure">📄 <span class="nb-label">Brochure</span></a>
@@ -1035,6 +1086,111 @@ a, button { -webkit-tap-highlight-color: transparent; }
          target="_blank" rel="noopener noreferrer"
          aria-label="Get directions to venue">↗ Get Directions</a>
     </div>
+  </div>
+</section>
+
+<section id="faq" class="reveal">
+  <div class="section-label">FAQ</div>
+  <h2>Got questions?</h2>
+  <p class="section-sub">Everything you need to know before you show up. Tap a question to expand it.</p>
+  <div class="faq-list">
+
+    <div class="faq-group-heading">General Information</div>
+    <details class="faq-item">
+      <summary><span><span class="faq-q-num">01</span>Is food/refreshments provided for registered participants?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-answer"><p>Yes. Food will be provided for all registered participants.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span><span class="faq-q-num">02</span>What is the reporting time for participants?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-answer"><p>Participants are requested to report at 9:00 AM on 11 September 2026.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span><span class="faq-q-num">03</span>What is the dress code for the event?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-answer"><p>A formal dress code is mandatory for all participants.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span><span class="faq-q-num">04</span>Do participants need to bring any ID or documents?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-answer"><p>Yes. Participants are requested to carry their College ID Card.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span><span class="faq-q-num">05</span>Is accommodation provided for participants?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-answer"><p>No. Accommodation will not be provided by the organizers. Participants are requested to make their own accommodation arrangements if required.</p></div>
+    </details>
+
+    <div class="faq-group-heading">Event Participation & Registration</div>
+    <details class="faq-item">
+      <summary><span><span class="faq-q-num">06</span>Are the events individual or team-based?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-answer"><p>All events are team-based.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span><span class="faq-q-num">07</span>What is the maximum team size for each event?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-answer"><p>The maximum team size varies depending on the event. Participants can check the official website for the specific team-size requirements of each event.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span><span class="faq-q-num">08</span>How many events can one participant participate in?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-answer"><p>A participant can participate in one Technical Event and one Non-Technical Event with a single registration fee of ₹250.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span><span class="faq-q-num">09</span>Is there any additional fee for participating in both a Technical and Non-Technical Event?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-answer"><p>No. The ₹250 registration fee covers participation in one Technical and one Non-Technical Event. No additional fee is required.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span><span class="faq-q-num">10</span>Will there be preliminary or qualifying rounds?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-answer"><p>Yes. Qualifying rounds will be conducted for the respective events wherever applicable. These rounds are considered part of the event.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span><span class="faq-q-num">11</span>Is a laptop required for any event?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-answer"><p>A laptop is required for Prompt Clash. Participants do not need to bring a laptop for the other events.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span><span class="faq-q-num">12</span>What is the last date for event registration?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-answer"><p>The last date for registration is 27 August 2026.</p></div>
+    </details>
+
+    <div class="faq-group-heading">PaperExpo</div>
+    <details class="faq-item">
+      <summary><span><span class="faq-q-num">13</span>How can I submit my paper for PaperExpo?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-answer"><p>PaperExpo submissions can be made through the Google Form available on our official website. Scan the QR code in the event poster to access the website and find the PaperExpo submission form.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span><span class="faq-q-num">14</span>Is there a specific format or template for PaperExpo papers?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-answer"><p>Yes. PaperExpo has specific format requirements and submission guidelines. Participants are requested to refer to the official website for complete details.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span><span class="faq-q-num">15</span>What are the selection criteria for PaperExpo?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-answer"><p>PaperExpo papers will be evaluated based on the specified requirements and selection criteria. Please refer to the official website for the complete selection guidelines.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span><span class="faq-q-num">16</span>When will the selected PaperExpo participants be informed?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-answer"><p>Selected participants will be informed on 31 August 2026.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span><span class="faq-q-num">17</span>What are the presentation guidelines for PaperExpo?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-answer"><p>Participants are requested to refer to the official website for the presentation guidelines, time limit, slide requirements, and other PaperExpo instructions.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span><span class="faq-q-num">18</span>Can I submit a paper based on an existing or completed project?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-answer"><p>Yes. Participants can submit a paper based on an existing or completed project. It is not necessary for the work to be entirely new.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span><span class="faq-q-num">19</span>Will PaperExpo be conducted offline?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-answer"><p>Yes. PaperExpo will be conducted offline at the event venue on the day of the symposium.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span><span class="faq-q-num">20</span>What is the final deadline for PaperExpo paper submission?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-answer"><p>The final date for paper submission is 27 August 2026. Participants are advised to complete their submissions before the deadline.</p></div>
+    </details>
+
+    <div class="faq-group-heading">Certificates & Prizes</div>
+    <details class="faq-item">
+      <summary><span><span class="faq-q-num">21</span>Will participants receive certificates for the events they participate in?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-answer"><p>Yes. Certificates will be provided as applicable. Participants are requested to refer to the official website for complete details regarding certificates.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span><span class="faq-q-num">22</span>Will prizes be provided for winners and runners-up?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-answer"><p>Yes. Prizes and certificates will be provided to winners and runners-up, as applicable. Please refer to the official website for further details.</p></div>
+    </details>
+
   </div>
 </section>
 </main>
