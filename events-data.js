@@ -114,7 +114,7 @@ const CONFIG = {
     {
       slug: "prompt-clash",
       category: "Technical",
-      title: "Prompt Clash",
+      title: "Prompt Clash (Registration Full)",
       blurb: "Think Smart. Prompt Better. Build the Future — craft the perfect AI prompt to generate the most impressive and innovative results.",
       fullDescription: "A battle of creativity where participants craft the perfect AI prompt to generate the most impressive, accurate, and innovative results. Think smart, prompt better, and let your imagination win!",
       teamSize: "2 members per team",
@@ -182,7 +182,7 @@ const CONFIG = {
     {
       slug: "escape-room",
       category: "Non-Technical",
-      title: "Escape Room – The Last Evidence",
+      title: "Escape Room – The Last Evidence (Registration Full)",
       blurb: "Step into a detective's shoes — analyze evidence, decode clues, and crack the murder mystery before time runs out.",
       fullDescription: "Think you have what it takes to solve a murder mystery? Step into the shoes of a detective and investigate a thrilling crime scene.",
       teamSize: "3 members per team",
