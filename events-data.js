@@ -174,8 +174,8 @@ const CONFIG = {
       fee: "₹250",
       feeAmount: 250,
       image: "https://placehold.co/900x500/12151C/5B8DEF?text=Prompt+Clash",
-      razorpayLink: "https://forms.gle/2qeX9TS2i7XTPiU8A",
-      registrationFormLink: "https://forms.gle/2qeX9TS2i7XTPiU8A"
+      razorpayLink: "",
+      registrationFormLink: ""
     },
 
     // ---- Escape Room ----
