@@ -1281,7 +1281,7 @@ function switchMapTab(which) {
   function padMs(n) { return String(Math.max(0,n)).padStart(3,"0"); }
   (function tick() {
     var diff = new Date(CONFIG.eventDateISO) - new Date();
-    if (diff <= 0) { cdEl.innerHTML = '<span class="cd-done">🎉 Happening now</span>'; return; }
+    if (diff <= 0) { cdEl.innerHTML = '<span class="cd-done">🎉 Symposium Concluded </span>'; return; }
     var ts = Math.floor(diff / 1000);
     cdDays.textContent = pad(Math.floor(ts / 86400));
     cdHrs.textContent = pad(Math.floor((ts % 86400) / 3600));
