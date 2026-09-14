@@ -22,7 +22,7 @@ const CONFIG = {
       venue: "DBMS Laboratory, Anna University Regional Campus, Madurai",
       timeAndDate: "9:00 AM on 11 September 2026",
       coordinator: "Dharshini B",
-      coordinatorPhone: "+91 8056512175",
+      coordinatorPhone: "+91 11111111111",
       eventFormat: [
         "Auction For the Questions (30 mins)",
         "Coding Challenge (60 mins)",
@@ -61,7 +61,7 @@ const CONFIG = {
       venue: "II Year CSE Classroom, IV Year CSE Classroom, Seminar Hall, Python Laboratory — AURCM",
       timeAndDate: "Starting from 10:00 AM on 11 September 2026",
       coordinator: "DAKSHAYANI R N R",
-      coordinatorPhone: "+91 8608366618",
+      coordinatorPhone: "+91 111111111",
       tracks: [
         "Track 1: AI & ML and Data Science",
         "Track 2: Cybersecurity & Networks",
@@ -121,7 +121,7 @@ const CONFIG = {
       venue: "CCC Lab, Anna University Regional Campus, Madurai",
       timeAndDate: "11 September 2026",
       coordinator: "Rubiga",
-      coordinatorPhone: "+91 8015491001",
+      coordinatorPhone: "+91 111111111",
       rounds: [
         {
           name: "Round 1 – One Prompt Image Challenge",
@@ -189,7 +189,7 @@ const CONFIG = {
       venue: "CSE 1st Year Classroom, AURCM",
       timeAndDate: "TBA on 11 September 2026",
       coordinator: "Swetha K",
-      coordinatorPhone: "+91 9344462626",
+      coordinatorPhone: "+91 111111111",
       eventFormat: [
         "Crime Scene Investigation: Teams examine the crime scene, collect evidence, and solve clues to uncover the complete mystery within the given time limit."
       ],
@@ -232,7 +232,7 @@ const CONFIG = {
       venue: "Small Drawing Hall, AURCM",
       timeAndDate: "1:30 PM – 3:30 PM on 11 September 2026",
       coordinator: "R. Abinaya",
-      coordinatorPhone: "+91 8122792468",
+      coordinatorPhone: "+91 111111111",
       rounds: [
         "Observation: View an image for 30 seconds and answer questions.",
         "Logic: Solve brain teasers, number patterns, Sudoku, riddles.",
@@ -274,8 +274,8 @@ const CONFIG = {
       timeAndDate: "TBA on 11 September 2026",
       language: "Tamil and English",
       coordinators: [
-        { name: "P. Mohan Vaithiya", phone: "+91 9043401456" },
-        { name: "A. Shyaam Sundhar", phone: "+91 7806831862" }
+        { name: "P. Mohan Vaithiya", phone: "+91 1111111111" },
+        { name: "A. Shyaam Sundhar", phone: "+91 1111111111" }
       ],
       rules: [
         "Topics will be allotted through a random draw system.",
